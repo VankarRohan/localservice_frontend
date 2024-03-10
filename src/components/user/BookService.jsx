@@ -31,36 +31,36 @@ const BookService = () => {
     }, [])
 
 
-    const submitBooking = async()=>{
+    // const submitBooking = async()=>{
 
         
-        const serviceProviderId = services?.serviceprovider?.useParams._id;
-        const userId = localStorage.getItem("id");
-        // const id1 = id;
-        const total = services.fees;
+    //     const serviceProviderId = services?.serviceprovider?.useParams._id;
+    //     const userId = localStorage.getItem("id");
+    //     // const id1 = id;
+    //     const total = services.fees;
 
-        const objectToSubmit = {
+    //     const objectToSubmit = {
 
-            // service:id1,
-            serviceprovider:serviceProviderId,
-            user:userId,
-            totalAmount : total,
-        }
-        try{
+    //         // service:id1,
+    //         serviceprovider:serviceProviderId,
+    //         user:userId,
+    //         totalAmount : total,
+    //     }
+    //     try{
 
-            const res = await axios.post("http://localhost:4000/bookings/booking",objectToSubmit)
-            console.log(res.data)
+    //         const res = await axios.post("http://localhost:4000/bookings/booking",objectToSubmit)
+    //         console.log(res.data)
 
-            navigate("/user/paymentbooking")
+    //         navigate("/user/paymentbooking")
 
             
-        }catch(e){
+    //     }catch(e){
 
-            console.log(e)
+    //         console.log(e)
 
-        }
+    //     }
         
-    }
+    // }
 
 
     return (
@@ -79,7 +79,7 @@ const BookService = () => {
                                     <div className="card-header p-0 mt-n4 mx-3">
                                         <a className="d-block shadow-xl border-radius-xl">
                                             <img
-                                                src="../assets/img/home-decor-1.jpg"
+                                                src="https://res.cloudinary.com/dduum8wwj/image/upload/v1709904385/c2utoj8hgyyu338vkeau.jpg"
                                                 alt="img-blur-shadow"
                                                 className="img-fluid shadow border-radius-xl"
                                             />
@@ -91,12 +91,9 @@ const BookService = () => {
                                             <h5>{service?.category?.name}</h5>
                                         </a>
                                         <p className="mb-0 text-sm">
-                                        {service?.subcategory?.name},<br></br>
+                                         {service?.subcategory?.name},<br></br>
                                         {service?.type?.name},<br></br>
-                                        {service?.fees},<br></br>
-                                        {service.area},<br></br>
-                                        {service.city},<br></br>
-                                        {service.state}<br></br>
+                                       
                                         </p>
                                         <div className="d-flex align-items-center justify-content-between">
                                             <button
@@ -104,7 +101,7 @@ const BookService = () => {
                                                 className="btn bg-gradient-primary w-100 my-2 mb-4"
                                                
                                             >
-                                                <Link to = {`/user/detailservice/${service._id}`} >Book now</Link>
+                                                <Link to = {`/user/detailservice/${service._id}`} >Details </Link>
 
                                             </button>
                                             

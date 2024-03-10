@@ -38,10 +38,10 @@ const SideBar = () => {
             name: "MY BOOKINGS",
             link: "/user/mybookings",
         },
-        {
-            name:"payment Booking",
-            link:"/user/paymentbooking"
-        }
+        // {
+        //     name:"payment Booking",
+        //     link:"/user/paymentbooking"
+        // }
     ];
 
     return (

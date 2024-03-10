@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 
-const DetailBookService = () => {
+// import React from 'react'
 
+const DetailService = () => {
     const cards = [{
         id: 1,
         title: "Card 1",
@@ -11,39 +12,39 @@ const DetailBookService = () => {
 
     }]
 
+
+    // const submitBooking = async () => {
+
+
+    //     const serviceProviderId = service.serviceprovider;
+    //     const userId = localStorage.getItem("id");
+    //     const id1 = id
+    //     const amount = service.fees;
+
+    //     const objectToSbmit = {
+
+    //         serviceId: id1,
+    //         serviceprovider: serviceProviderId,
+    //         user: userId,
+    //         totalAmount: amount,
+    //     };
+
+    //     try {
+    //         const res = await axios.post(
+    //             "http://localhost:4000/bookings/booking",
+    //             objectToSbmit
+    //         );
+    //         console.log(res.data);
+
+    //     } catch (err) {
+    //         console.log(err);
+    //     }
+    // };
+
     const navigate = useNavigate()
-    const submitBooking = async () => {
-
-
-        const serviceProviderId = service.serviceprovider;
-        const userId = localStorage.getItem("id");
-        const id1 = id
-        const amount = service.fees;
-
-        const objectToSbmit = {
-
-            serviceId: id1,
-            serviceprovider: serviceProviderId,
-            user: userId,
-            totalAmount: amount,
-        };
-
-        try {
-            const res = await axios.post(
-                "http://localhost:4000/bookings/booking",
-                objectToSbmit
-            );
-            console.log(res.data);
-            navigate("/user/mybookings")
-            
-        } catch (err) {
-            console.log(err);
-        }
-    };
-
-
     const [service, setservice] = useState([])
     const id = useParams().id;
+
     const submitHandler = async () => {
         try {
             const res = await axios.get(
@@ -69,7 +70,7 @@ const DetailBookService = () => {
                     <div key={card.id} className="col-md-4 mb-4">
                         <div className="card">
                             <img
-                                // src={service.imageUrl}
+                                src={service.imageUrl}
                                 className="card-img-top"
                                 alt={`Card ${service._id}`}
                             />
@@ -83,9 +84,6 @@ const DetailBookService = () => {
                                 <p className="card-text">{service?.area}</p>
                                 <p className="card-text">{service?.city}</p>
                                 <p className="card-text">{service?.state}</p>
-                                <button className="btn btn-primary" onClick={() => { submitBooking() }}>
-                                    Book now
-                                </button>
                             </div>
                         </div>
                     </div>
@@ -93,10 +91,6 @@ const DetailBookService = () => {
             </div>
         </div>
     )
-
 }
 
-
-
-
-export default DetailBookService
+export default DetailService

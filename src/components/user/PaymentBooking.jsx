@@ -1,234 +1,203 @@
-import React from 'react'
-// import { Link } from 'react-router-dom'
-
+import React, { useEffect, useState } from 'react'
+import { Button, TextField } from '@mui/material';
 import './Payment.css'
+import {
+    MDBBtn,
+    MDBCard,
+    MDBCardBody,
+    MDBCol,
+    MDBContainer,
+    // MDBIcon,
+    // MDBInput,
+    MDBRow,
+} from "mdb-react-ui-kit";
+import { useForm } from 'react-hook-form';
+import axios from 'axios';
+import { useNavigate, useParams } from 'react-router-dom';
+
+
 
 const PaymentBooking = () => {
-    return (
-        <div>
-       
-            <div className="container">
-                <div className="row">
-                    <div className="col-lg-4 mb-lg-0 mb-3">
-                        <div className="card p-3">
-                            <div className="img-box">
-                                <img
-                                    src="https://www.freepnglogos.com/uploads/visa-logo-download-png-21.png"
-                                    alt=""
-                                />
-                            </div>
-                            <div className="number">
-                                <label className="fw-bold" htmlFor="">
-                                    **** **** **** 1060
-                                </label>
-                            </div>
-                            <div className="d-flex align-items-center justify-content-between">
-                                <small>
-                                    <span className="fw-bold">Expiry date:</span>
-                                    <span>10/16</span>
-                                </small>
-                                <small>
-                                    <span className="fw-bold">Name:</span>
-                                    <span>Kumar</span>
-                                </small>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-lg-4 mb-lg-0 mb-3">
-                        <div className="card p-3">
-                            <div className="img-box">
-                                <img
-                                    src="https://www.freepnglogos.com/uploads/mastercard-png/file-mastercard-logo-svg-wikimedia-commons-4.png"
-                                    alt=""
-                                />
-                            </div>
-                            <div className="number">
-                                <label className="fw-bold">**** **** **** 1060</label>
-                            </div>
-                            <div className="d-flex align-items-center justify-content-between">
-                                <small>
-                                    <span className="fw-bold">Expiry date:</span>
-                                    <span>10/16</span>
-                                </small>
-                                <small>
-                                    <span className="fw-bold">Name:</span>
-                                    <span>Kumar</span>
-                                </small>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-lg-4 mb-lg-0 mb-3">
-                        <div className="card p-3">
-                            <div className="img-box">
-                                <img
-                                    src="https://www.freepnglogos.com/uploads/discover-png-logo/credit-cards-discover-png-logo-4.png"
-                                    alt=""
-                                />
-                            </div>
-                            <div className="number">
-                                <label className="fw-bold">**** **** **** 1060</label>
-                            </div>
-                            <div className="d-flex align-items-center justify-content-between">
-                                <small>
-                                    <span className="fw-bold">Expiry date:</span>
-                                    <span>10/16</span>
-                                </small>
-                                <small>
-                                    <span className="fw-bold">Name:</span>
-                                    <span>Kumar</span>
-                                </small>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-12 mt-4">
-                        <div className="card p-3">
-                            <p className="mb-0 fw-bold h4">Payment Methods</p>
-                        </div>
-                    </div>
-                    <div className="col-12">
-                        <div className="card p-3">
-                            <div className="card-body border p-0">
-                                <p>
-                                    <a
-                                        className="btn btn-primary w-100 h-100 d-flex align-items-center justify-content-between"
-                                        data-bs-toggle="collapse"
-                                        href="#collapseExample"
-                                        role="button"
-                                        aria-expanded="true"
-                                        aria-controls="collapseExample"
-                                    >
-                                        <span className="fw-bold">PayPal</span>
-                                        <span className="fab fa-cc-paypal"></span>
-                                    </a>
-                                </p>
-                                <div className="collapse p-3 pt-0" id="collapseExample">
-                                    <div className="row">
-                                        <div className="col-8">
-                                            <p className="h4 mb-0">Summary</p>
-                                            <p className="mb-0">
-                                                <span className="fw-bold">Product:</span>
-                                                <span className="c-green">: Name of product</span>
-                                            </p>
-                                            <p className="mb-0">
-                                                <span className="fw-bold">Price:</span>
-                                                <span className="c-green">:$452.90</span>
-                                            </p>
-                                            <p className="mb-0">
-                                                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                                                Atque nihil neque quisquam aut repellendus, dicta vero? Animi
-                                                dicta cupiditate, facilis provident quibusdam ab quis, iste
-                                                harum ipsum hic, nemo qui!
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="card-body border p-0">
-                                <p>
-                                    <a
-                                        className="btn btn-primary p-2 w-100 h-100 d-flex align-items-center justify-content-between"
-                                        data-bs-toggle="collapse"
-                                        href="#collapseExample"
-                                        role="button"
-                                        aria-expanded="true"
-                                        aria-controls="collapseExample"
-                                    >
-                                        <span className="fw-bold">Credit Card</span>
-                                        <span className="">
-                                            <span className="fab fa-cc-amex" />
-                                            <span className="fab fa-cc-mastercard" />
-                                            <span className="fab fa-cc-discover" />
-                                        </span>
-                                    </a>
-                                </p>
-                                <div className="collapse show p-3 pt-0" id="collapseExample">
-                                    <div className="row">
-                                        <div className="col-lg-5 mb-lg-0 mb-3">
-                                            <p className="h4 mb-0">Summary</p>
-                                            <p className="mb-0">
-                                                <span className="fw-bold">Product:</span>
-                                                <span className="c-green">: Name of product</span>
-                                            </p>
-                                            <p className="mb-0">
-                                                <span className="fw-bold">Price:</span>
-                                                <span className="c-green">:$452.90</span>
-                                            </p>
-                                            <p className="mb-0">
-                                                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                                                Atque nihil neque quisquam aut repellendus, dicta vero? Animi
-                                                dicta cupiditate, facilis provident quibusdam ab quis, iste
-                                                harum ipsum hic, nemo qui!
-                                            </p>
-                                        </div>
-                                        <div className="col-lg-7">
-                                            <form action="" className="form">
-                                                <div className="row">
-                                                    <div className="col-12">
-                                                        <div className="form__div">
-                                                            <input
-                                                                type="text"
-                                                                className="form-control"
-                                                                placeholder=" "
-                                                            />
-                                                            <label htmlFor="" className="form__label">
-                                                                Card Number
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                    <div className="col-6">
-                                                        <div className="form__div">
-                                                            <input
-                                                                type="text"
-                                                                className="form-control"
-                                                                placeholder=" "
-                                                            />
-                                                            <label htmlFor="" className="form__label">
-                                                                MM / yy
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                    <div className="col-6">
-                                                        <div className="form__div">
-                                                            <input
-                                                                type="password"
-                                                                className="form-control"
-                                                                placeholder=" "
-                                                            />
-                                                            <label htmlFor="" className="form__label">
-                                                                cvv code
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                    <div className="col-12">
-                                                        <div className="form__div">
-                                                            <input
-                                                                type="text"
-                                                                className="form-control"
-                                                                placeholder=" "
-                                                            />
-                                                            <label htmlFor="" className="form__label">
-                                                                name on the card
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                    <div className="col-12">
-                                                        <div className="btn btn-primary w-100">Sumbit</div>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-12">
-                        <div className="btn btn-primary payment">Make Payment</div>
-                    </div>
-                </div>
-            </div>
+    const [cardNumber, setCardNumber] = useState('');
+    const [cardNumberError, setCardNumberError] = useState(null);
+    const id = useParams().id
+    const [expiryMonth, setExpiryMonth] = useState('');
+    const [expiryYear, setExpiryYear] = useState('');
+    const [expiryDateError, setExpiryDateError] = useState(null);
+    // const { handleSubmit } = useForm()
+    const navigate = useNavigate()
 
-        </div>
+
+    useEffect(() => {
+        validateExpiryDate();
+    }, [expiryMonth, expiryYear]);
+
+    const handleCardNumberChange = (event) => {
+        const newCardNumber = event.target.value.replace(/\D/g, '');
+
+
+        if (newCardNumber.length > 16) {
+            setCardNumberError('Card number cannot exceed 16 digits.');
+            return;
+        }
+
+
+        const formattedCardNumber = newCardNumber
+            .replace(/(.{4})/g, '$1 ')
+            .trim();
+
+        setCardNumber(formattedCardNumber);
+        setCardNumberError(null);
+    };
+
+    const handleExpiryChange = (event) => {
+        const newValue = event.target.value.replace(/\D/g, '');
+
+
+        if (newValue.length === 6) {
+            setExpiryMonth(newValue.slice(0, 2));
+            setExpiryYear(newValue.slice(2));
+        } else {
+
+            if (newValue.length === 1 && parseInt(newValue) <= 1) {
+                setExpiryMonth(newValue);
+            } else if (newValue.length == 2 && parseInt(newValue) <= 12) {
+                setExpiryMonth(newValue);
+            } else {
+                setExpiryDateError('Invalid credentials.');
+            }
+        }
+    };
+
+    const validateExpiryDate = () => {
+        if (!expiryMonth || !expiryYear) {
+            return;
+        }
+
+        const currentMonth = new Date().getMonth() + 1;
+        const currentYear = new Date().getFullYear();
+
+        if (expiryYear < currentYear || (expiryYear === currentYear && expiryMonth < currentMonth)) {
+            setExpiryDateError('Card has expired. Please enter a future expiry date.');
+        } else {
+            setExpiryDateError(null);
+        }
+    };
+
+    const handleFormSubmit = async () => {
+
+
+        if (!cardNumber || cardNumber.length !== 19) {
+            setCardNumberError('Invalid card number. Please enter 16 digits.');
+            return;
+        }
+
+        if (!expiryMonth || !expiryYear) {
+            setExpiryDateError('Please enter a valid expiry date in MM/YYYY format.');
+            return;
+        }
+
+        try {
+
+            const res = await axios.put("http://localhost:4000/bookings/bookingstatus/" + id)
+            console.log(res.data)
+            navigate("/user/mybookings")
+            alert("Booking done...")
+
+        } catch (error) {
+
+            console.log(error)
+        }
+
+        console.log('Card number:', cardNumber);
+        console.log('Expiry:', expiryMonth + '/' + expiryYear);
+
+        setCardNumber('');
+        setExpiryMonth('');
+        setExpiryYear('');
+    };
+
+
+
+    return (
+
+        // <form onSubmit= {handleSubmit(submitHandler)}>
+        <MDBContainer fluid className="py-5 gradient-custom" style={{ height: "100vh" }}>
+            <MDBRow className="d-flex justify-content-center py-5">
+                <MDBCol md="7" lg="5" xl="4">
+                    <MDBCard style={{ borderRadius: "15px", marginTop: "125px" }}>
+                        <MDBCardBody className="p-4">
+                            <MDBRow className="d-flex align-items-center">
+                                <MDBCol size="9">
+                                    <TextField
+
+                                        label="Card Number"
+                                        id="form1"
+                                        type="text"
+                                        placeholder="1234 5678 9012 3457"
+                                        value={cardNumber}
+                                        onChange={handleCardNumberChange}
+                                        error={!!cardNumberError} // Set error state based on cardNumberError
+                                        helperText={cardNumberError}
+
+                                    />
+                                </MDBCol>
+
+                                <MDBCol size="3">
+                                    <img
+                                        src="https://img.icons8.com/color/48/000000/visa.png"
+                                        alt="visa"
+                                        width="64px"
+
+                                    />
+                                </MDBCol>
+
+                                <MDBCol size="9">
+                                    <TextField
+                                        label="Cardholder's Name"
+                                        id="form2"
+                                        type="text"
+                                        placeholder="Cardholder's Name"
+
+                                    />
+                                </MDBCol>
+
+                                <MDBCol size="6">
+                                    <TextField
+                                        label="Expiration"
+                                        id="form2"
+                                        type="text"
+                                        placeholder="MM/YYYY"
+                                        onChange={handleExpiryChange}
+                                        error={!!expiryDateError} // Set error state based on cardNumberError
+                                        helperText={expiryDateError}
+
+                                    />
+                                </MDBCol>
+
+                                <MDBCol size="3">
+                                    <TextField
+                                        label="CVV"
+                                        id="form2"
+                                        type="text"
+                                        placeholder="&#9679;&#9679;&#9679;"
+
+                                    />
+                                </MDBCol>
+
+                                <MDBCol size="3">
+                                    <Button color="info" variant="contained" rounded size="lg" onClick={handleFormSubmit}>
+                                        pay
+                                    </Button>
+                                </MDBCol>
+                            </MDBRow>
+                        </MDBCardBody>
+                    </MDBCard>
+                </MDBCol>
+            </MDBRow>
+        </MDBContainer>
+
+        // </form>
     )
 }
 
