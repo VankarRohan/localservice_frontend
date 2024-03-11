@@ -21,14 +21,14 @@ const AddService = () => {
     // var userObj = Object.assign(data);
     // console.log("userObj...", userObj);
     const id = localStorage.getItem("id")
-    const dataObj = Object.assign(data,{serviceprovider : id})
+    const dataObj = Object.assign(data, { serviceprovider: id })
     setisLoading(true);
     try {
       //api calling...
-      
-      
+
+
       if (id !== undefined) {
-        
+
         const res = await axios.post("http://localhost:4000/services/services", dataObj);
         console.log(res.data.data)
         console.log(data);
@@ -48,7 +48,7 @@ const AddService = () => {
 
         alert("Data not posted")
       }
-      
+
 
     } catch (e) {
 
@@ -133,6 +133,12 @@ const AddService = () => {
 
                 <form onSubmit={handleSubmit(submitHandler)} role="form" class="text-start">
 
+
+                  <div className="input-group input-group-outline my-3">
+
+                    <input type="text" className="form-control font-weight-bolder" placeholder="Service Name.."  {...register("servicename")} />
+
+                  </div>
                   <div className="input-group input-group-outline my-3">
 
                     <select {...register("category")}>
@@ -197,6 +203,13 @@ const AddService = () => {
 
                     <input type="text" className="form-control font-weight-bolder mb-0" placeholder="State"  {...register("state")} />
                   </div>
+
+                  {/* <div className="input-group input-group-outline my-3"> */}
+
+                    {/* <label >file</label> */}
+                    {/* <input type="file" placeholder="choose image"{...register("myImage")} /> */}
+
+                  {/* </div> */}
 
                   <div className="text-center">
                     <input type="submit"

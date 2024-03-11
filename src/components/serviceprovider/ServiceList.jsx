@@ -8,8 +8,6 @@ const ServiceList = () => {
 
     const [services, setservices] = useState([]);
 
-
-
     const fetchMyService = async () => {
         const id = localStorage.getItem("id")
         try {
@@ -26,6 +24,26 @@ const ServiceList = () => {
 
         }
     }
+
+    const changehandler = async (e) => {
+
+        try {
+
+            const res = await axios.get("http://localhost:4000/services/filterservice",
+                {
+                    params: {
+                        servicename: e.target.value,
+                    },
+                })
+            console.log("res in searchHandler", res.data.data)
+            setservices(res.data.data)
+
+        } catch (error) {
+            setservices([])
+        }
+    }
+
+    
 
     const deleteservice = async (id) => {
 
@@ -49,8 +67,6 @@ const ServiceList = () => {
     useEffect(() => {
 
         fetchMyService()
-        // deleteservice()
-
     }, [])
 
 
@@ -59,18 +75,26 @@ const ServiceList = () => {
             <div className="main-content border-radius-lg ">
                 <div className='row'>
                     <div className="col-md-12">
-                        <div className="card strpied-tabled-with-hover">
+
+                        <div className="card strpied-tabled-with-hover" style={{border:"2px"}} >
                             <div className="card-header ">
                                 <h4 className="card-title">My Services</h4>
                                 <p className="card-category">Services added by you..</p>
                             </div>
+                            <input
+                                type="text"
+                                placeholder='search for services...'
+                                onChange={(e) => {
+                                    changehandler(e)
+                                }} />
+
                             <div className="card-body table-full-width table-responsive">
                                 <table className="table table-hover table-striped">
                                     <thead>
                                         <tr>
-                                            <th>Category</th>
+                                            <th>Service name</th>
+                                            <th>category</th>
                                             <th>SubCategory</th>
-                                            <th>Type</th>
                                             <th style={{ justifyContent: "center" }}>Action</th>
                                         </tr>
                                     </thead>
@@ -81,9 +105,9 @@ const ServiceList = () => {
                                                 return (
 
                                                     <tr>
+                                                        <td>{service?.servicename}</td>
                                                         <td>{service?.category?.name}</td>
                                                         <td>{service?.subcategory?.name}</td>
-                                                        <td>{service?.type?.name}</td>
                                                         {/* <td>Action</td> */}
                                                         <td>
                                                             <button className="btn btn-info" onClick={() => { }}>

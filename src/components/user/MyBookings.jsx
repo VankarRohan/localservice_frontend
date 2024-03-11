@@ -1,7 +1,9 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
-// import Link//
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const MyBookings = () => {
 
   // const navigate = useNavigate()
@@ -26,6 +28,39 @@ const MyBookings = () => {
     }
 
   }
+
+  const deletebooking = async (id) => {
+
+
+    try {
+
+      const res = await axios.delete("http://localhost:4000/bookings/booking/" + id)
+      console.log(res)
+      console.log(res.data.data)
+      if (res.status === 200) {
+
+
+        toast.danger('🦄 Booking canceled successfully...', {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+
+        });
+      }
+
+      getBookings()
+
+    } catch (error) {
+      console.log(error)
+    }
+
+  }
+
   useEffect(() => {
 
     getBookings()
@@ -33,25 +68,38 @@ const MyBookings = () => {
 
   return (
 
-    <div className="col-12 mt-4">
+    <div className="col-12 mt-4" >
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+
+      />
       <div className="mb-5 ps-3">
-        <h4 className="mb-1 font-weight-bolder">Bookings</h4>
+        <h4 className="mb-1 font-weight-bolder" style={{ marginInlineStart: "22px" }}>Bookings</h4>
         {/* <p className="font-weight-bolder">You can book services shown below...</p> */}
       </div>
-      <div className="row">
+      <div className="row" >
         {
           bookings?.map((booking) => {
 
             return (
-              <div className="col-xl-3 col-md-6 mb-xl-0 mb-4" style={{ width: "500px" }}>
+              <div className="col-xl-3 col-md-6 mb-xl-0 mb-5" style={{ width: "425px", marginInlineStart: "15px" }}>
                 <div className="card card-blog card-plain">
                   <div className="card-header p-0 mt-n4 mx-3">
-                    <a className="d-block shadow-xl border-radius-xl">
+                    <a className="col-xl-3 col-md-6 mb-xl-0 mb-5">
                       <img
-                        src="https://res.cloudinary.com/dduum8wwj/image/upload/v1709904385/c2utoj8hgyyu338vkeau.jpg"
+                        src="https://res.cloudinary.com/dduum8wwj/image/upload/v1710050022/nlbo5vmlukyctyv9wt7h.jpg"
                         alt="img-blur-shadow"
                         className="img-fluid shadow border-radius-xl justify-content-center "
-                        style={{height:"250px"}}
+                        style={{ height: "250px" }}
                       />
                     </a>
                   </div>
@@ -69,14 +117,22 @@ const MyBookings = () => {
                       <button
                         type="button"
                         className="btn bg-gradient-primary w-100 my-2 mb-4"
-
                       >
                         <Link to={`/user/paymentbooking/${booking._id}`} >pay now</Link>
 
                       </button>
+                    </div>
+                    <div className="d-flex align-items-center justify-content-between">
+                      <button
+                        type="button"
+                        className="btn bg-gradient-primary w-100 my-2 mb-4"
+                        onClick={() => deletebooking(booking._id)} >
 
+                        Cancel booking
+                      </button>
                     </div>
                   </div>
+
                 </div>
               </div>
             )

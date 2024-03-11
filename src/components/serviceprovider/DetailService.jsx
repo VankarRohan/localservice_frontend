@@ -70,20 +70,46 @@ const DetailService = () => {
                     <div key={card.id} className="col-md-4 mb-4">
                         <div className="card">
                             <img
-                                src={service.imageUrl}
+                                src="https://res.cloudinary.com/dduum8wwj/image/upload/v1710050022/nlbo5vmlukyctyv9wt7h.jpg"
                                 className="card-img-top"
                                 alt={`Card ${service._id}`}
                             />
 
-                            <div className="card-body p-3">
+                            <div className="card-body p-4">
                                 {/* <h5 className="card-title">{service.servicename}</h5> */}
-                                <p className="card-title">{service?.category?.name}</p>
-                                <p className="card-text">{service?.subcategory?.name}</p>
-                                <p className="card-text">{service?.type?.name}</p>
-                                <p className="card-text">{service?.fees}</p>
-                                <p className="card-text">{service?.area}</p>
-                                <p className="card-text">{service?.city}</p>
-                                <p className="card-text">{service?.state}</p>
+
+                                
+                                <h3 className="card-title " style={{color:'solid black'}}>{service?.servicename}...</h3>
+                                <p className="card-title">
+                                   <h6> Category :-</h6>
+                                     {service?.category?.name}
+                                </p>
+                                 <p className="card-title">
+                                   <h6> Sub-Category :-</h6>
+                                     {service?.subcategory?.name}
+                                </p>
+                                <p className="card-title">
+                                   <h6> Type :-</h6>
+                                     {service?.type?.name}
+                                </p>
+                                <p className="card-title">
+                                    <h6> Fees :-</h6>
+                                     {service?.fees}
+                                </p>
+                                <p className="card-title">
+                                   <h6> Area :-</h6>
+                                     {service?.area}
+                                </p>
+                                <p className="card-title">
+                                   <h6> City :-</h6>
+                                     {service?.city}
+                                </p>
+                                <p className="card-title">
+                                   <h6> State :-</h6>
+                                     {service?.state}
+                                </p>
+                                
+                                
                             </div>
                         </div>
                     </div>
