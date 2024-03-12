@@ -37,7 +37,10 @@ const DetailBookService = () => {
                 objectToSbmit
             );
             console.log(res)
-            // console.log(res.data);
+            console.log(res.data.data)
+            if (res.status === 200) {
+
+
                 toast.success('🦄 Booking added successfully...', {
                     position: "top-center",
                     autoClose: 5000,
@@ -49,7 +52,8 @@ const DetailBookService = () => {
                     theme: "colored",
 
                 });
-            
+            }
+
             navigate("/user/mybookings")
 
         } catch (err) {

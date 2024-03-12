@@ -183,7 +183,7 @@ const RegistrationForm = () => {
                                 <p className="mb-2 text-sm mx-auto">
                                     Already have an account?
                                     <Link
-                                        to="/sign-in"
+                                        to="/"
                                         className="text-primary text-gradient font-weight-bold"
                                     >
                                         Sign in

@@ -14,6 +14,8 @@ import {
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -101,8 +103,21 @@ const PaymentBooking = () => {
 
             const res = await axios.put("http://localhost:4000/bookings/bookingstatus/" + id)
             console.log(res.data)
+            if(res.status === 200){
+                toast.success('🦄 Booking done successfully..', {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "colored",
+                    transition: Bounce,
+                    });
+            }
             navigate("/user/mybookings")
-            alert("Booking done...")
+            // alert("Booking done...")
 
         } catch (error) {
 
@@ -123,6 +138,19 @@ const PaymentBooking = () => {
 
         // <form onSubmit= {handleSubmit(submitHandler)}>
         <MDBContainer fluid className="py-5 gradient-custom" style={{ height: "100vh" }}>
+            <ToastContainer
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="colored"
+                // transition:Bounce,
+/>
             <MDBRow className="d-flex justify-content-center py-5">
                 <MDBCol md="7" lg="5" xl="4">
                     <MDBCard style={{ borderRadius: "15px", marginTop: "125px" }}>

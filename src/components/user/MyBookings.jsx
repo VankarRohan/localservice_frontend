@@ -40,7 +40,7 @@ const MyBookings = () => {
       if (res.status === 200) {
 
 
-        toast.danger('🦄 Booking canceled successfully...', {
+        toast.success('🦄 Booking canceled successfully...', {
           position: "top-center",
           autoClose: 5000,
           hideProgressBar: false,

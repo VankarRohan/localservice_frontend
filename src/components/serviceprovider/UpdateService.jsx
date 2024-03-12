@@ -3,28 +3,44 @@ import { useForm } from 'react-hook-form';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const UpdateService = () => {
-   
+
     const id = useParams().id
     const [categories, setcategories] = useState([]);
     const [subcategories, setSubcategories] = useState([])
     const [types, setTypes] = useState([])
-    
+    const navigate = useNavigate()
 
 
     const submitHandler = async (data) => {
 
         try {
 
-            const res = await axios.put("http://localhost:4000/services/services/" + id , data)
+            const res = await axios.put("http://localhost:4000/services/services/" + id, data)
             console.log(res.data)
 
             if (res.status === 200) {
 
                 window.location.pathname = "/serviceprovider/servicelist"
-                alert("data updated")
+                // alert("data updated")
+                // navigate("/serviceprovider/servicelist")
+                if (res.status === 200) {
+
+                        toast.success('🦄 Service updated successfully...', {
+                        position: "top-center",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "colored",
+
+                    });
+                }
+
             }
 
         } catch (error) {
@@ -64,7 +80,7 @@ const UpdateService = () => {
                 fees: res.data.data.fees,
                 area: res.data.data.area,
                 state: res.data.data.state,
-                city:res.data.data.city
+                city: res.data.data.city
             }
         }
 
@@ -105,7 +121,7 @@ const UpdateService = () => {
                                     <h4 className="text-white font-weight-bolder text-center mt-2 mb-0">Update Service</h4>
                                 </div>
                             </div>
-                            
+
                             <div className="card-body">
 
                                 <form onSubmit={handleSubmit(submitHandler)} role="form" class="text-start">
@@ -181,7 +197,7 @@ const UpdateService = () => {
                                             // onClick={() => postApiData()}
                                             value="submit" >
                                             Update service
-                                            </button>
+                                        </button>
                                     </div>
 
 

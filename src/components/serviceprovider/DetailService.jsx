@@ -68,7 +68,7 @@ const DetailService = () => {
             <div className="row">
                 {cards.map((card) => (
                     <div key={card.id} className="col-md-4 mb-4">
-                        <div className="card">
+                        <div className="card" style={{border:'2px solid black'}}>
                             <img
                                 src="https://res.cloudinary.com/dduum8wwj/image/upload/v1710050022/nlbo5vmlukyctyv9wt7h.jpg"
                                 className="card-img-top"
