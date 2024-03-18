@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from "react-router-dom";
 
 const AddService = () => {
 
@@ -13,7 +14,7 @@ const AddService = () => {
   const [subcategories, setSubcategories] = useState([])
   const [types, setTypes] = useState([])
   const [isLoading, setisLoading] = useState(false)
-
+  const navigate = useNavigate()
 
 
   const submitHandler = async (data) => {
@@ -43,6 +44,7 @@ const AddService = () => {
           theme: "colored",
 
         });
+        navigate("/serviceprovider/servicelist")
         // alert("data posted")
       } else if (res.status == 500) {
 

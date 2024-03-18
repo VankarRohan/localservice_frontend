@@ -15,6 +15,8 @@ import DetailBookService from './components/user/DetailBookService';
 import RegistrationForm from './components/pages/RegistrationForm';
 import DetailService from './components/serviceprovider/DetailService';
 import UpdateService from './components/serviceprovider/UpdateService';
+import Profile from './components/pages/Profile';
+import UserProfile from './components/user/UserProfile';
 
 
 function App() {
@@ -71,11 +73,15 @@ function App() {
               <Route path="/serviceprovider/details/:id" element={<DetailService />}></Route>
               <Route path="/serviceprovider/update/:id" element={<UpdateService />}></Route>
               <Route path="/serviceprovider/servicelist" element={<ServiceList />}></Route>
+              <Route path="/serviceprovider/profile" element={<Profile />}></Route>
               <Route path="/user/bookservice" element={<BookService />}></Route>
               <Route path="/user/mybookings" element={<MyBookings />}></Route>
               <Route path="/user/detailservice/:id" element={<DetailBookService />}></Route>
               <Route path="user/paymentbooking/:id" element=<PaymentBooking /> ></Route>
               <Route path="/user/dashboard" element={<UserDashboard />}></Route>
+              <Route path="/user/profile" element={<UserProfile />}></Route>
+
+
               
             </Route>
           </Routes>

@@ -28,7 +28,7 @@ const UpdateService = () => {
                 // navigate("/serviceprovider/servicelist")
                 if (res.status === 200) {
 
-                        toast.success('🦄 Service updated successfully...', {
+                    toast.success('🦄 Service updated successfully...', {
                         position: "top-center",
                         autoClose: 5000,
                         hideProgressBar: false,
@@ -77,6 +77,7 @@ const UpdateService = () => {
             const res = await axios.get("http://localhost:4000/services/services/" + id)
 
             return {
+                servicename:res.data.data.servicename,
                 fees: res.data.data.fees,
                 area: res.data.data.area,
                 state: res.data.data.state,
@@ -125,6 +126,13 @@ const UpdateService = () => {
                             <div className="card-body">
 
                                 <form onSubmit={handleSubmit(submitHandler)} role="form" class="text-start">
+
+
+                                    <div className="input-group input-group-outline my-3">
+
+                                        <input type="text" className="form-control font-weight-bolder" placeholder="Servicename"  {...register("servicename")} />
+
+                                    </div>
 
                                     <div className="input-group input-group-outline my-3">
 

@@ -8,7 +8,7 @@ const Sign_in = () => {
 
     const { register, handleSubmit } = useForm();
     const [role, setrole] = useState("65ccb273d0984494fb621f7b")
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
 
 
 
@@ -25,7 +25,8 @@ const Sign_in = () => {
                     console.log("Login successfull")
                     console.log(res.data.data)
                     localStorage.setItem("id", res.data.data._id)
-                    navigate("/user/bookservice")
+
+                    window.location.href = "/user/dashboard"
                 }
 
             } else if (role == "65ccbf3ee5c62d495e19360e") {
@@ -36,8 +37,8 @@ const Sign_in = () => {
                     console.log("Login successful...")
                     console.log(res.data.data)
                     localStorage.setItem("id", res.data.data._id)
-                    // window.location.pathname = "/serviceprovider/dashboard"
-                    navigate("/serviceprovider/dashboard")
+
+                    window.location.href = "/serviceprovider/addservice"
                 }
 
             }
