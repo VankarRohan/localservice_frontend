@@ -1,16 +1,56 @@
 import { Button } from '@mui/material'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useForm } from 'react-hook-form'
+// import { useNavigate } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Profile = () => {
 
     const [serviceprovider, setserviceprovider] = useState('')
+    const id = localStorage.getItem("id")
 
+
+    const { register, handleSubmit } = useForm({
+        defaultValues: async () => {
+            const res = await axios.get("http://localhost:4000/sproviders/sprovider/" + id)
+
+
+            return {
+                email: res.data.data.email,
+                name: res.data.data.name,
+                phone: res.data.data.phone
+
+            }
+        }
+
+    })
+
+    const submitHandler = async (data) => {
+
+        const res = await axios.put("http://localhost:4000/sproviders/sprovider/" + id, data)
+        console.log(res.data)
+        if (res.status === 200) {
+            toast.success('🦄 Serviceprovider updated successfully..', {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+
+            });
+
+        }
+
+    }
 
     const getServiceprovider = async () => {
 
-        const id = localStorage.getItem("id")
+
         const res = await axios.get("http://localhost:4000/sproviders/sprovider/" + id)
         console.log(res.data.data)
         setserviceprovider(res.data.data)
@@ -28,6 +68,19 @@ const Profile = () => {
 
     return (
         <div className="container-fluid px-2 px-md-4">
+            <ToastContainer
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="colored"
+
+            />
             <div
                 className="page-header min-height-300 border-radius-xl mt-4"
                 style={{
@@ -41,6 +94,8 @@ const Profile = () => {
                 <div className="row gx-4 mb-2">
                     <div className="col-auto">
                         <div className="avatar avatar-xl position-relative">
+
+                            <img src="./download.png" alt="profile_image" />
 
                         </div>
                     </div>
@@ -724,6 +779,103 @@ const Profile = () => {
                         </div>
                     </div>
                 </div> */}
+                <div className="page-header align-items-start min-vh-100">
+
+                    <div className="container my-auto">
+                        <div className="row">
+                            <div className="col-lg-4 col-md-8 col-12 mx-auto">
+                                <div className="card z-index-0 fadeIn3 fadeInBottom">
+                                    <div className="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                                        <div className="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1">
+                                            <h4 className="text-white font-weight-bolder text-center mt-2 mb-0">Update Serviceprovider</h4>
+                                        </div>
+                                    </div>
+
+                                    <div className="card-body">
+
+                                        <form onSubmit={handleSubmit(submitHandler)} role="form" class="text-start">
+
+
+                                            <div className="input-group input-group-outline my-3">
+
+                                                <input type="text" className="form-control font-weight-bolder" placeholder="Email.."  {...register("email")} />
+
+                                            </div>
+
+                                            {/* <div className="input-group input-group-outline my-3">
+
+                                                <select {...register("category")}>
+
+                                                    <option>SELECT Category</option>
+                                                    {categories?.map((cat) => {
+                                                        return (
+                                                            <>
+                                                                <option value={cat._id}>{cat.name}</option>
+                                                            </>
+                                                        );
+                                                    })}
+                                                </select>
+                                            </div> */}
+
+                                            {/* <div className="input-group input-group-outline my-3">
+
+                                                <select {...register("subcategory")}>
+
+                                                    <option>SELECT Sub-Category</option>
+                                                    {subcategories?.map((subcat) => {
+                                                        return (
+                                                            <>
+                                                                <option value={subcat._id}>{subcat.name}</option>
+                                                            </>
+                                                        );
+                                                    })}
+                                                </select>
+                                            </div> */}
+
+                                            {/* <div className="input-group input-group-outline my-3">
+
+                                                <select {...register("type")}>
+
+                                                    <option>SELECT Type</option>
+                                                    {types?.map((type) => {
+                                                        return (
+                                                            <>
+                                                                <option value={type._id}>{type.name}</option>
+                                                            </>
+                                                        );
+                                                    })}
+                                                </select>
+                                            </div> */}
+
+                                            <div className="input-group input-group-outline my-3">
+
+                                                <input type="text" className="form-control font-weight-bolder" placeholder="Name"  {...register("name")} />
+                                            </div>
+
+                                            <div className="input-group input-group-outline my-3">
+
+                                                <input type="text" className="form-control font-weight-bolder mb-0" placeholder="Phone"  {...register("phone")} />
+                                            </div>
+
+                                            <div className="text-center">
+                                                <button type="submit"
+                                                    className="btn bg-gradient-primary w-100 my-4 mb-2"
+                                                    // onClick={() => postApiData()}
+                                                    value="submit" >
+                                                    Update
+                                                </button>
+                                            </div>
+
+
+                                        </form>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 

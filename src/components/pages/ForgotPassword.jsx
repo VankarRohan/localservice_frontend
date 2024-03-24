@@ -1,17 +1,13 @@
 import axios from 'axios';
 import React, { useState } from 'react'
-import { useForm } from "react-hook-form";
-import { Link, useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import { Link, useNavigate } from 'react-router-dom'
 
-
-const Sign_in = () => {
+const ForgotPassword = () => {
 
     const { register, handleSubmit } = useForm();
-
     const [role, setrole] = useState("65ccb273d0984494fb621f7b")
-    // const navigate = useNavigate()
-
-
+    const navigate = useNavigate()
 
     const submithandler = async (data) => {
 
@@ -20,26 +16,36 @@ const Sign_in = () => {
 
             if (role == "65ccb273d0984494fb621f7b") {
 
-                const res = await axios.post("http://localhost:4000/users/user/login", data)
+                const res = await axios.post("http://localhost:4000/users/user/isuserexist", data)
 
-                if (res.status == 200) {
-                    console.log("Login successfull")
-                    console.log(res.data.data)
-                    localStorage.setItem("id", res.data.data._id)
+                console.log(res.data)
+                if (res.data.flag == 1) {
+                    console.log("Email exist", res.data.data.email);
+                    //setData in location
+                    navigate("/resetpwd", {
+                        state: {
+                            email: res.data.data.email,
+                            role: res.data.data.role.name
+                        },
 
-                    window.location.href = "/user/dashboard"
+                    });
                 }
 
             } else if (role == "65ccbf3ee5c62d495e19360e") {
 
-                const res = await axios.post("http://localhost:4000/sproviders/sprovider/login", data)
+                const res = await axios.post("http://localhost:4000/sproviders/sprovider/isserproexist", data)
 
-                if (res.status == 200) {
-                    console.log("Login successful...")
-                    console.log(res.data.data)
-                    localStorage.setItem("id", res.data.data._id)
+                console.log(res.data)
+                if (res.data.flag == 1) {
+                    console.log("Email exist", res.data.data.email);
+                    //setData in location
+                    navigate("/resetpwd", {
+                        state: {
+                            email: res.data.data.email,
+                            role: res.data.data.role.name
+                        },
 
-                    window.location.href = "/serviceprovider/Dashboard"
+                    });
                 }
 
             }
@@ -54,8 +60,6 @@ const Sign_in = () => {
     }
 
     return (
-        // <body class="bg-gray-200">
-        //     <main className="main-content  mt-0">
         <div
             className="page-header align-items-start min-vh-100"
             style={{
@@ -71,7 +75,7 @@ const Sign_in = () => {
                             <div className="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                                 <div className="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1">
                                     <h4 className="text-white font-weight-bolder text-center mt-2 mb-0">
-                                        Sign in
+                                        Forgot Password
                                     </h4>
 
                                 </div>
@@ -80,7 +84,8 @@ const Sign_in = () => {
                                 <form
                                     role="form"
                                     className="text-start"
-                                    onSubmit={handleSubmit(submithandler)}>
+                                    onSubmit={handleSubmit(submithandler)}
+                                >
 
                                     <div className="input-group input-group-outline my-3"
                                     >
@@ -88,7 +93,7 @@ const Sign_in = () => {
                                         <select
                                             className="input-group input-group-outline mb-3"
                                             value={role}
-                                            onChange={(e) => setrole(e.target.value)}
+                                        onChange={(e) => setrole(e.target.value)}
                                         >
                                             <option>SELECT ROLE</option>
                                             <option value="65ccb273d0984494fb621f7b">
@@ -99,6 +104,7 @@ const Sign_in = () => {
                                             </option>
                                         </select>
                                     </div>
+
                                     <div className="input-group input-group-outline my-3">
 
                                         <input
@@ -108,38 +114,14 @@ const Sign_in = () => {
                                             {...register("email")}
                                             className="form-control" />
                                     </div>
-                                    <div className="input-group input-group-outline mb-3">
 
-                                        <input
-                                            type="password" placeholder='Enter Password..'
-                                            {...register("password")}
-                                            className="form-control" />
-                                    </div>
+                                    <input
+                                        className="btn bg-gradient-primary w-100 my-4 mb-2"
+                                        type='submit'
+                                        value="Submit">
 
-                                    <Link to="/forgotpwd"
-                                        className="form-control"
-                                    >
+                                    </input>
 
-                                        forgot password ..?
-
-                                    </Link>
-                                    <div className="text-center">
-                                        <input
-                                            type="submit"
-                                            value="sign In"
-                                            className="btn bg-gradient-primary w-100 my-4 mb-2"
-                                        />
-
-
-                                    </div>
-                                    <p className="mt-4 text-sm text-center">
-                                        Don't have an account? <br />
-                                        <Link to="/register"
-                                            className="text-primary text-gradient font-weight-bold"
-                                        >
-                                            Sign up
-                                        </Link>
-                                    </p>
                                 </form>
                             </div>
                         </div>
@@ -147,9 +129,7 @@ const Sign_in = () => {
                 </div>
             </div>
         </div>
-        //     </main>
-        // </body>
     )
 }
 
-export default Sign_in
+export default ForgotPassword

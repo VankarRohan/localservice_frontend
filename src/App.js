@@ -17,6 +17,8 @@ import DetailService from './components/serviceprovider/DetailService';
 import UpdateService from './components/serviceprovider/UpdateService';
 import Profile from './components/pages/Profile';
 import UserProfile from './components/user/UserProfile';
+import ForgotPassword from './components/pages/ForgotPassword';
+import ResetPassword from './components/pages/ResetPassword';
 
 
 function App() {
@@ -66,6 +68,9 @@ function App() {
           <Routes >
 
             <Route path="/" element={<Sign_in></Sign_in>}></Route>
+            <Route path="/forgotpwd" element={<ForgotPassword></ForgotPassword>}></Route>
+            <Route path="/resetpwd" element={<ResetPassword></ResetPassword>}></Route>
+
             <Route path='/register' element={<RegistrationForm />}></Route>
             <Route element={<ProtectedRoutes />}>
               <Route path="/serviceprovider/dashboard" element={<ServiceProviderDashboard />}></Route>

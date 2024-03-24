@@ -7,26 +7,25 @@ import {
     MDBCardBody,
     MDBCol,
     MDBContainer,
-    // MDBIcon,
-    // MDBInput,
     MDBRow,
 } from "mdb-react-ui-kit";
-import { useForm } from 'react-hook-form';
+// import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import CustomeLoader from '../CustomeLoader';
 
 
 
 const PaymentBooking = () => {
+    const [isLoading, setisLoading] = useState(false)
     const [cardNumber, setCardNumber] = useState('');
     const [cardNumberError, setCardNumberError] = useState(null);
     const id = useParams().id
     const [expiryMonth, setExpiryMonth] = useState('');
     const [expiryYear, setExpiryYear] = useState('');
     const [expiryDateError, setExpiryDateError] = useState(null);
-    // const { handleSubmit } = useForm()
     const navigate = useNavigate()
 
 
@@ -72,18 +71,22 @@ const PaymentBooking = () => {
     };
 
     const validateExpiryDate = () => {
+
         if (!expiryMonth || !expiryYear) {
             return;
         }
 
+        setisLoading(true)
         const currentMonth = new Date().getMonth() + 1;
         const currentYear = new Date().getFullYear();
-
+        setisLoading(false)
         if (expiryYear < currentYear || (expiryYear === currentYear && expiryMonth < currentMonth)) {
             setExpiryDateError('Card has expired. Please enter a future expiry date.');
         } else {
             setExpiryDateError(null);
+            setisLoading(false)
         }
+
     };
 
     const handleFormSubmit = async () => {
@@ -101,9 +104,12 @@ const PaymentBooking = () => {
 
         try {
 
+            setisLoading(true)
             const res = await axios.put("http://localhost:4000/bookings/bookingstatus/" + id)
             console.log(res.data)
-            if(res.status === 200){
+            setisLoading(false)
+
+            if (res.status === 200) {
                 toast.success('🦄 Booking done successfully..', {
                     position: "top-center",
                     autoClose: 5000,
@@ -114,7 +120,7 @@ const PaymentBooking = () => {
                     progress: undefined,
                     theme: "colored",
                     transition: Bounce,
-                    });
+                });
             }
             navigate("/user/mybookings")
             // alert("Booking done...")
@@ -136,8 +142,9 @@ const PaymentBooking = () => {
 
     return (
 
-        // <form onSubmit= {handleSubmit(submitHandler)}>
+
         <MDBContainer fluid className="py-5 gradient-custom" style={{ height: "100vh" }}>
+
             <ToastContainer
                 position="top-center"
                 autoClose={5000}
@@ -149,83 +156,88 @@ const PaymentBooking = () => {
                 draggable
                 pauseOnHover
                 theme="colored"
-                // transition:Bounce,
-/>
-            <MDBRow className="d-flex justify-content-center py-5">
-                <MDBCol md="7" lg="5" xl="4">
-                    <MDBCard style={{ borderRadius: "15px", marginTop: "125px" }}>
-                        <MDBCardBody className="p-4">
-                            <MDBRow className="d-flex align-items-center">
-                                <MDBCol size="9">
-                                    <TextField
 
-                                        label="Card Number"
-                                        id="form1"
-                                        type="text"
-                                        placeholder="1234 5678 9012 3457"
-                                        value={cardNumber}
-                                        onChange={handleCardNumberChange}
-                                        error={!!cardNumberError} // Set error state based on cardNumberError
-                                        helperText={cardNumberError}
+            />
+            {isLoading ? (
+                <CustomeLoader />
+            ) : (
+                <>
+                        <MDBRow className="d-flex justify-content-center py-5">
+                            <MDBCol md="7" lg="5" xl="4">
+                                <MDBCard style={{ borderRadius: "15px", marginTop: "125px" }}>
+                                    <MDBCardBody className="p-4">
+                                        <MDBRow className="d-flex align-items-center">
+                                            <MDBCol size="9">
+                                                <TextField
 
-                                    />
-                                </MDBCol>
+                                                    label="Card Number"
+                                                    id="form1"
+                                                    type="text"
+                                                    placeholder="1234 5678 9012 3457"
+                                                    value={cardNumber}
+                                                    onChange={handleCardNumberChange}
+                                                    error={!!cardNumberError} // Set error state based on cardNumberError
+                                                    helperText={cardNumberError}
 
-                                <MDBCol size="3">
-                                    <img
-                                        src="https://img.icons8.com/color/48/000000/visa.png"
-                                        alt="visa"
-                                        width="64px"
+                                                />
+                                            </MDBCol>
 
-                                    />
-                                </MDBCol>
+                                            <MDBCol size="3">
+                                                <img
+                                                    src="https://img.icons8.com/color/48/000000/visa.png"
+                                                    alt="visa"
+                                                    width="64px"
 
-                                <MDBCol size="9">
-                                    <TextField
-                                        label="Cardholder's Name"
-                                        id="form2"
-                                        type="text"
-                                        placeholder="Cardholder's Name"
+                                                />
+                                            </MDBCol>
 
-                                    />
-                                </MDBCol>
+                                            <MDBCol size="9">
+                                                <TextField
+                                                    label="Cardholder's Name"
+                                                    id="form2"
+                                                    type="text"
+                                                    placeholder="Cardholder's Name"
 
-                                <MDBCol size="6">
-                                    <TextField
-                                        label="Expiration"
-                                        id="form2"
-                                        type="text"
-                                        placeholder="MM/YYYY"
-                                        onChange={handleExpiryChange}
-                                        error={!!expiryDateError} // Set error state based on cardNumberError
-                                        helperText={expiryDateError}
+                                                />
+                                            </MDBCol>
 
-                                    />
-                                </MDBCol>
+                                            <MDBCol size="6">
+                                                <TextField
+                                                    label="Expiration"
+                                                    id="form2"
+                                                    type="text"
+                                                    placeholder="MM/YYYY"
+                                                    onChange={handleExpiryChange}
+                                                    error={!!expiryDateError} // Set error state based on cardNumberError
+                                                    helperText={expiryDateError}
 
-                                <MDBCol size="3">
-                                    <TextField
-                                        label="CVV"
-                                        id="form2"
-                                        type="text"
-                                        placeholder="&#9679;&#9679;&#9679;"
+                                                />
+                                            </MDBCol>
 
-                                    />
-                                </MDBCol>
+                                            <MDBCol size="3">
+                                                <TextField
+                                                    label="CVV"
+                                                    id="form2"
+                                                    type="text"
+                                                    placeholder="&#9679;&#9679;&#9679;"
 
-                                <MDBCol size="3">
-                                    <Button color="info" variant="contained" rounded size="lg" onClick={handleFormSubmit}>
-                                        pay
-                                    </Button>
-                                </MDBCol>
-                            </MDBRow>
-                        </MDBCardBody>
-                    </MDBCard>
-                </MDBCol>
-            </MDBRow>
+                                                />
+                                            </MDBCol>
+
+                                            <MDBCol size="3">
+                                                <Button color="info" variant="contained" rounded size="lg" onClick={handleFormSubmit}>
+                                                    pay
+                                                </Button>
+                                            </MDBCol>
+                                        </MDBRow>
+                                    </MDBCardBody>
+                                </MDBCard>
+                            </MDBCol>
+                        </MDBRow>
+                </>
+            )}
         </MDBContainer>
 
-        // </form>
     )
 }
 
