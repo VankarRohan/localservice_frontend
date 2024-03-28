@@ -189,7 +189,7 @@ const ServiceProviderDashboard = () => {
                                                 <thead style={{ color: "black" }}>
                                                     <tr >
                                                         <th className="text-uppercase text-center text-black text-xxs font-weight-bolder opacity-10 ">
-                                                            Service Id
+                                                            user
                                                         </th>
                                                         <th className="text-center text-uppercase text-black text-xxs font-weight-bolder opacity-10 ">
                                                             Total Amount

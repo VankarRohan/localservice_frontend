@@ -54,8 +54,7 @@ const Sign_in = () => {
     }
 
     return (
-        // <body class="bg-gray-200">
-        //     <main className="main-content  mt-0">
+        
         <div
             className="page-header align-items-start min-vh-100"
             style={{
@@ -147,8 +146,7 @@ const Sign_in = () => {
                 </div>
             </div>
         </div>
-        //     </main>
-        // </body>
+        
     )
 }
 

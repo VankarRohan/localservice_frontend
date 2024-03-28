@@ -11,14 +11,47 @@ const RegistrationForm = () => {
     const { register, handleSubmit } = useForm();
     const navigate = useNavigate()
 
+    const [latitude, setlatitude] = useState('')
+    const [longitude, setlongitude] = useState('')
+
+    const getUserCurrentLocation = () => {
+
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    console.log("Latitude:", position.coords.latitude);
+                    console.log("Longitude:", position.coords.longitude);
+                    setlatitude(position.coords.latitude);
+                    setlongitude(position.coords.longitude);
+                },
+                (error) => {
+                    console.error("Error getting location:", error);
+                }
+            );
+        } else {
+            console.log("Geolocation is not supported by this browser");
+        }
+    };
+
+    useEffect(() => {
+
+        getUserCurrentLocation();
+
+    }, [])
 
     const submithandler = async (data) => {
+
+        console.log("data..............", data)
+
+        const objectTosubmit = Object.assign(data, { latitude: latitude, longitude: longitude })
+        console.log(objectTosubmit)
 
         try {
 
             if (role === "65ccb273d0984494fb621f7b") {
 
-                const res = await axios.post("http://localhost:4000/users/user", data)
+                const res = await axios.post("http://localhost:4000/users/user", objectTosubmit)
                 console.log(res.data)
                 toast.success('🦄 User registration successful...', {
                     position: "top-center",
@@ -32,14 +65,14 @@ const RegistrationForm = () => {
 
                 });
                 console.log("User registration successful...")
-                navigate("/sign-in")
+                navigate("/")
 
             } else if (role === "65ccbf3ee5c62d495e19360e") {
 
-                const res = await axios.post("http://localhost:4000/sproviders/sprovider", data)
+                const res = await axios.post("http://localhost:4000/sproviders/sprovider", objectTosubmit)
                 console.log(res.data)
                 console.log("service provider registration successful...")
-                navigate("/sign-in")
+                navigate("/")
                 toast.success('🦄 service provider registration successful...', {
                     position: "top-center",
                     autoClose: 5000,

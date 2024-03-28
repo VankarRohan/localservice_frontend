@@ -125,13 +125,20 @@ const MyBookings = () => {
 
                           </p>
                           <div className="d-flex align-items-center justify-content-between">
-                            <button
-                              type="button"
+                            {/* <button
+                            type="button"
+                            className="btn bg-gradient-primary w-100 my-2 mb-4"
+
+
+                          > */}
+                            <Link
+                              to={`/user/paymentdemo/${booking._id}`}
                               className="btn bg-gradient-primary w-100 my-2 mb-4"
                             >
-                              <Link to={`/user/paymentbooking/${booking._id}`} >pay now</Link>
+                              pay now
+                            </Link>
 
-                            </button>
+                            {/* </button> */}
                           </div>
                           <div className="d-flex align-items-center justify-content-between">
                             <button

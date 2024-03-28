@@ -100,26 +100,27 @@ const BookService = () => {
                                                 </div>
                                                 <div className="card-body p-3">
 
-                                                    <a href="javascript:;" style={{ color: 'black' }}>
-                                                        <h4 style={{ color: 'solid black' }}>{service?.servicename}...</h4>
-                                                    </a>
-                                                    <p className="mb-0 text-sm">
-                                                        <h6> Category :-</h6>
-                                                        {service?.category?.name},<br></br>
+                                                <a href="javascript:;" style={{ color: 'black' }}>
+                                                    <h4 style={{ color: 'solid black' }}>{service?.servicename}...</h4>
+                                                </a>
+                                                <p className="mb-0 text-sm">
+                                                    <h6> Category :-</h6>
+                                                    {service?.category?.name},<br></br>
 
-                                                        <h6> Sub-Category :-</h6>
-                                                        {service?.subcategory?.name}<br></br>
+                                                    <h6> Sub-Category :-</h6>
+                                                    {service?.subcategory?.name}<br></br>
 
-                                                    </p>
-                                                    <div className="d-flex align-items-center justify-content-between">
-                                                        <button
-                                                            type="button"
-                                                            className="btn bg-gradient-primary w-100 my-2 mb-4"
+                                                </p>
+                                                <div className="d-flex align-items-center justify-content-between">
 
+                                                    <Link
+                                                        to={`/user/detailservice/${service._id}`}
+                                                        className="btn bg-gradient-primary w-100 my-2 mb-4"
                                                         >
-                                                            <Link to={`/user/detailservice/${service._id}`} >Details </Link>
+                                                        Details
+                                                    </Link>
 
-                                                        </button>
+
 
                                                     </div>
                                                 </div>

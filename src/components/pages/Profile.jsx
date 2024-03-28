@@ -45,6 +45,7 @@ const Profile = () => {
             });
 
         }
+        getServiceprovider()
 
     }
 
@@ -95,7 +96,7 @@ const Profile = () => {
                     <div className="col-auto">
                         <div className="avatar avatar-xl position-relative">
 
-                            <img src="./download.png" alt="profile_image" />
+                            <img src="../assets/img/icons/profile.png" alt="profile_image" />
 
                         </div>
                     </div>

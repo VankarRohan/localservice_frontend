@@ -108,7 +108,7 @@ const ResetPassword = () => {
 
                                         <input
                                             type="text"
-                                            placeholder='Enter Password..'
+                                            placeholder='Enter new password..'
 
                                             {...register("password")}
                                             className="form-control" />

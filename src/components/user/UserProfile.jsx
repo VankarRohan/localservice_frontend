@@ -48,6 +48,7 @@ const UserProfile = () => {
                 // transition: Bounce,
             });
         }
+        getuser()
 
     }
 

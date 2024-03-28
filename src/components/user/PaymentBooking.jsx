@@ -162,78 +162,81 @@ const PaymentBooking = () => {
                 <CustomeLoader />
             ) : (
                 <>
-                        <MDBRow className="d-flex justify-content-center py-5">
-                            <MDBCol md="7" lg="5" xl="4">
-                                <MDBCard style={{ borderRadius: "15px", marginTop: "125px" }}>
-                                    <MDBCardBody className="p-4">
-                                        <MDBRow className="d-flex align-items-center">
-                                            <MDBCol size="9">
-                                                <TextField
+                    <MDBRow className="d-flex justify-content-center py-5" style={{ borderRadius: "15px", marginTop: "125px" }}>
+                        <MDBCol md="7" lg="5" xl="4"
+                        style={{backgroundImage:src("../assets/img/illustrations/pattern-tree.svg")}}
+                        >
+                            <MDBCard className='card'>
+                               
+                                <MDBCardBody className="p-4">
+                                    <MDBRow className="d-flex align-items-center">
+                                        <MDBCol size="9">
+                                            <TextField
 
-                                                    label="Card Number"
-                                                    id="form1"
-                                                    type="text"
-                                                    placeholder="1234 5678 9012 3457"
-                                                    value={cardNumber}
-                                                    onChange={handleCardNumberChange}
-                                                    error={!!cardNumberError} // Set error state based on cardNumberError
-                                                    helperText={cardNumberError}
+                                                label="Card Number"
+                                                id="form1"
+                                                type="text"
+                                                placeholder="1234 5678 9012 3457"
+                                                value={cardNumber}
+                                                onChange={handleCardNumberChange}
+                                                error={!!cardNumberError} // Set error state based on cardNumberError
+                                                helperText={cardNumberError}
 
-                                                />
-                                            </MDBCol>
+                                            />
+                                        </MDBCol>
 
-                                            <MDBCol size="3">
-                                                <img
-                                                    src="https://img.icons8.com/color/48/000000/visa.png"
-                                                    alt="visa"
-                                                    width="64px"
+                                        <MDBCol size="3">
+                                            <img
+                                                src="https://img.icons8.com/color/48/000000/visa.png"
+                                                alt="visa"
+                                                width="64px"
 
-                                                />
-                                            </MDBCol>
+                                            />
+                                        </MDBCol>
 
-                                            <MDBCol size="9">
-                                                <TextField
-                                                    label="Cardholder's Name"
-                                                    id="form2"
-                                                    type="text"
-                                                    placeholder="Cardholder's Name"
+                                        <MDBCol size="9">
+                                            <TextField
+                                                label="Cardholder's Name"
+                                                id="form2"
+                                                type="text"
+                                                placeholder="Cardholder's Name"
 
-                                                />
-                                            </MDBCol>
+                                            />
+                                        </MDBCol>
 
-                                            <MDBCol size="6">
-                                                <TextField
-                                                    label="Expiration"
-                                                    id="form2"
-                                                    type="text"
-                                                    placeholder="MM/YYYY"
-                                                    onChange={handleExpiryChange}
-                                                    error={!!expiryDateError} // Set error state based on cardNumberError
-                                                    helperText={expiryDateError}
+                                        <MDBCol size="6">
+                                            <TextField
+                                                label="Expiration"
+                                                id="form2"
+                                                type="text"
+                                                placeholder="MM/YYYY"
+                                                onChange={handleExpiryChange}
+                                                error={!!expiryDateError} // Set error state based on cardNumberError
+                                                helperText={expiryDateError}
 
-                                                />
-                                            </MDBCol>
+                                            />
+                                        </MDBCol>
 
-                                            <MDBCol size="3">
-                                                <TextField
-                                                    label="CVV"
-                                                    id="form2"
-                                                    type="text"
-                                                    placeholder="&#9679;&#9679;&#9679;"
+                                        <MDBCol size="3">
+                                            <TextField
+                                                label="CVV"
+                                                id="form2"
+                                                type="text"
+                                                placeholder="&#9679;&#9679;&#9679;"
 
-                                                />
-                                            </MDBCol>
+                                            />
+                                        </MDBCol>
 
-                                            <MDBCol size="3">
-                                                <Button color="info" variant="contained" rounded size="lg" onClick={handleFormSubmit}>
-                                                    pay
-                                                </Button>
-                                            </MDBCol>
-                                        </MDBRow>
-                                    </MDBCardBody>
-                                </MDBCard>
-                            </MDBCol>
-                        </MDBRow>
+                                        <MDBCol size="3">
+                                            <Button color="info" variant="contained" rounded size="lg" onClick={handleFormSubmit}>
+                                                pay
+                                            </Button>
+                                        </MDBCol>
+                                    </MDBRow>
+                                </MDBCardBody>
+                            </MDBCard>
+                        </MDBCol>
+                    </MDBRow>
                 </>
             )}
         </MDBContainer>

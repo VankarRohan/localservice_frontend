@@ -123,7 +123,7 @@ const DetailBookService = () => {
                                             alt={`Card ${service._id}`}
                                         />
 
-                                        <div className="card-body p-3">
+                                        <div className="card-body  p-3">
 
                                             <h3 className="card-title " style={{ color: 'solid black' }}>{service?.servicename}...</h3>
                                             <p className="card-title">
@@ -154,7 +154,7 @@ const DetailBookService = () => {
                                                 <h6> State :-</h6>
                                                 {service?.state}
                                             </p>
-                                            <button className="btn btn-primary " onClick={() => { submitBooking() }}>
+                                            <button className="btn btn-primary w-100" onClick={() => { submitBooking() }}>
                                                 Book now
                                             </button>
                                         </div>
