@@ -2,7 +2,8 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from 'react-router-dom';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Sign_in = () => {
 
@@ -23,11 +24,25 @@ const Sign_in = () => {
                 const res = await axios.post("http://localhost:4000/users/user/login", data)
 
                 if (res.status == 200) {
+                    toast.success('🦄 Login successful...', {
+                        position: "top-right",
+                        autoClose: 1500,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                        // transition: Bounce,
+                    });
+                    setTimeout(() => {
+                        window.location.href = "/user/dashboard"
+
+                    }, 1000);
                     console.log("Login successfull")
                     console.log(res.data.data)
                     localStorage.setItem("id", res.data.data._id)
 
-                    window.location.href = "/user/dashboard"
                 }
 
             } else if (role == "65ccbf3ee5c62d495e19360e") {
@@ -41,20 +56,28 @@ const Sign_in = () => {
 
                     window.location.href = "/serviceprovider/Dashboard"
                 }
-
             }
         }
 
         catch (e) {
 
             console.log(e)
+            toast.error('Error in Login !', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+
+            });
         }
-
-
     }
 
     return (
-        
+
         <div
             className="page-header align-items-start min-vh-100"
             style={{
@@ -62,6 +85,19 @@ const Sign_in = () => {
                     'url("https://images.unsplash.com/photo-1497294815431-9365093b7331?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80")'
             }}
         >
+            <ToastContainer
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="colored"
+
+            />
             <span className="mask bg-gradient-dark opacity-6" />
             <div className="container my-auto">
                 <div className="row">
@@ -146,7 +182,7 @@ const Sign_in = () => {
                 </div>
             </div>
         </div>
-        
+
     )
 }
 

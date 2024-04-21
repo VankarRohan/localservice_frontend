@@ -158,14 +158,14 @@ const ServiceList = () => {
                                                                     <td>{service?.subcategory?.name}</td>
                                                                     {/* <td>Action</td> */}
                                                                     <td>
-                                                                        <button className="btn btn-info" onClick={() => { }}>
+                                                                        <button className="btn btn-link bg-gradient-info text-info text-gradient" onClick={() => { }}>
                                                                             <Link to={`/serviceprovider/details/${service._id}`}>DETAILS</Link>
                                                                         </button>
 
-                                                                        <button className="btn btn-success">
+                                                                        <button className="btn btn-link bg-gradient-success text-success text-gradient">
                                                                             <Link to={`/serviceprovider/update/${service._id}`}>UPDATE</Link>
                                                                         </button>
-                                                                        <button className="btn btn-danger" onClick={() => { deleteservice(service._id) }}>DELETE</button>
+                                                                        <button className="btn btn-link bg-gradient-danger text-danger text-gradient" onClick={() => { deleteservice(service._id) }}>DELETE</button>
                                                                     </td>
 
 

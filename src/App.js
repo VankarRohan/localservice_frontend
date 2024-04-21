@@ -21,6 +21,9 @@ import ForgotPassword from './components/pages/ForgotPassword';
 import ResetPassword from './components/pages/ResetPassword';
 import Address from './components/user/Address';
 import PaymentDemo from './components/user/PaymentDemo';
+import UpdateAddress from './components/user/UpdateAddress';
+import { About } from './components/pages/About';
+import DetailBooking from './components/user/DetailBooking';
 
 
 function App() {
@@ -69,7 +72,9 @@ function App() {
         <div>
           <Routes >
 
-            <Route path="/" element={<Sign_in></Sign_in>}></Route>
+
+            <Route path="/" element={<About></About>}></Route>
+            <Route path="/sign-in" element={<Sign_in></Sign_in>}></Route>
             <Route path="/forgotpwd" element={<ForgotPassword></ForgotPassword>}></Route>
             <Route path="/resetpwd" element={<ResetPassword></ResetPassword>}></Route>
 
@@ -84,11 +89,13 @@ function App() {
               <Route path="/user/bookservice" element={<BookService />}></Route>
               <Route path="/user/mybookings" element={<MyBookings />}></Route>
               <Route path="/user/detailservice/:id" element={<DetailBookService />}></Route>
-              <Route path="user/paymentbooking/:id" element=<PaymentBooking /> ></Route>
-              <Route path="user/address" element=<Address /> ></Route>
-              <Route path="user/paymentdemo/:id" element=<PaymentDemo /> ></Route>
+              <Route path="/user/paymentbooking/:id" element=<PaymentBooking /> ></Route>
+              <Route path="/user/address" element=<Address /> ></Route>
+              <Route path="/user/paymentdemo/:id" element=<PaymentDemo /> ></Route>
+              <Route path="/user/paymentdemo/updateaddress/:id" element=<UpdateAddress /> ></Route>
               <Route path="/user/dashboard" element={<UserDashboard />}></Route>
               <Route path="/user/profile" element={<UserProfile />}></Route>
+              <Route path="/user/bookingdetails/:id" element={<DetailBooking />}></Route>
 
 
               

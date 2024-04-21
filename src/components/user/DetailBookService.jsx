@@ -36,7 +36,7 @@ const DetailBookService = () => {
 
             setisLoading(true)
             const res = await axios.post(
-                "http://localhost:4000/bookings/booking",
+                "http://localhost:4000/bookings/booking/",
                 objectToSbmit
             );
             console.log(res)
@@ -62,7 +62,20 @@ const DetailBookService = () => {
             navigate("/user/mybookings")
 
         } catch (err) {
+
             console.log(err);
+            toast.error('Error !', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+
+            });
+            setisLoading(false)
         }
     };
 
@@ -83,6 +96,19 @@ const DetailBookService = () => {
 
         } catch (error) {
             console.log(error);
+            toast.error('Error !', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+
+            });
+            setisLoading(false)
+
         }
     };
     useEffect(() => {
@@ -100,68 +126,71 @@ const DetailBookService = () => {
             ) : (
                 <>
 
-                        <ToastContainer
-                            position="top-center"
-                            autoClose={5000}
-                            hideProgressBar={false}
-                            newestOnTop={false}
-                            closeOnClick
-                            rtl={false}
-                            pauseOnFocusLoss
-                            draggable
-                            pauseOnHover
-                            theme="colored"
+                    <ToastContainer
+                        position="top-center"
+                        autoClose={5000}
+                        hideProgressBar={false}
+                        newestOnTop={false}
+                        closeOnClick
+                        rtl={false}
+                        pauseOnFocusLoss
+                        draggable
+                        pauseOnHover
+                        theme="colored"
 
-                        />
-                        <div className="row">
-                            {cards.map((card) => (
-                                <div key={card.id} className="col-md-4 mb-4" >
-                                    <div className="card" style={{ border: "2px solid black" }}>
-                                        <img
-                                            src="https://res.cloudinary.com/dduum8wwj/image/upload/v1710050022/nlbo5vmlukyctyv9wt7h.jpg"
-                                            className="card-img-top"
-                                            alt={`Card ${service._id}`}
-                                        />
+                    />
+                    <div className="row">
+                        {cards.map((card) => (
+                            <div key={card.id} className="col-md-4 ml-15 mb-4" >
+                                <div className="card" style={{ border: "2px solid black" }}>
+                                    <img
+                                        src={service.imageUrl}
+                                        className="card-img-top"
+                                        alt={`Card ${service._id}`}
+                                    />
 
-                                        <div className="card-body  p-3">
+                                    <div className="card-body  p-3">
 
-                                            <h3 className="card-title " style={{ color: 'solid black' }}>{service?.servicename}...</h3>
-                                            <p className="card-title">
-                                                <h6> Category :-</h6>
-                                                {service?.category?.name}
-                                            </p>
-                                            <p className="card-title">
-                                                <h6> Sub-Category :-</h6>
-                                                {service?.subcategory?.name}
-                                            </p>
-                                            <p className="card-title">
-                                                <h6> Type :-</h6>
-                                                {service?.type?.name}
-                                            </p>
-                                            <p className="card-title">
-                                                <h6> Fees :-</h6>
-                                                {service?.fees}
-                                            </p>
-                                            <p className="card-title">
-                                                <h6> Area :-</h6>
-                                                {service?.area}
-                                            </p>
-                                            <p className="card-title">
-                                                <h6> City :-</h6>
-                                                {service?.city}
-                                            </p>
-                                            <p className="card-title">
-                                                <h6> State :-</h6>
-                                                {service?.state}
-                                            </p>
-                                            <button className="btn btn-primary w-100" onClick={() => { submitBooking() }}>
-                                                Book now
-                                            </button>
-                                        </div>
+                                        <h3 className="card-title " style={{ color: 'solid black' }}>{service?.servicename}...</h3>
+                                        <p className="card-title">
+                                            <h6> Category :-</h6>
+                                            {service?.category?.name}
+                                        </p>
+                                        <p className="card-title">
+                                            <h6> Sub-Category :-</h6>
+                                            {service?.subcategory?.name}
+                                        </p>
+                                        <p className="card-title">
+                                            <h6> Type :-</h6>
+                                            {service?.type?.name}
+                                        </p>
+                                        <p className="card-title">
+                                            <h6> Fees :-</h6>
+                                            {service?.fees}
+                                        </p>
+                                        <p className="card-title">
+                                            <h6> Area :-</h6>
+                                            {service?.area}
+                                        </p>
+                                        <p className="card-title">
+                                            <h6> City :-</h6>
+                                            {service?.city}
+                                        </p>
+                                        <p className="card-title">
+                                            <h6> State :-</h6>
+                                            {service?.state}
+                                        </p>
+                                        <button
+                                            className="btn btn-link bg-gradient-success text-black text-gradient "
+                                            style={{ width: "350px", color: "black" }}
+                                            onClick={() => { submitBooking() }}>
+                                            Book now
+                                        </button>
                                     </div>
                                 </div>
-                            ))}
-                        </div>
+                            </div>
+                        ))}
+                    </div>
                 </>
             )}
         </div>

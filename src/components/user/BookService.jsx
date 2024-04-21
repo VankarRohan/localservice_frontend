@@ -12,6 +12,33 @@ const BookService = () => {
     const [services, setservices] = useState([]);
     const [isLoading, setisLoading] = useState([])
 
+    const [latitude, setlatitude] = useState('')
+    const [longitude, setlongitude] = useState('')
+
+    const getUserCurrentLocation = () => {
+
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    console.log("Latitude:", position.coords.latitude);
+                    console.log("Longitude:", position.coords.longitude);
+                    setlatitude(position.coords.latitude);
+                    setlongitude(position.coords.longitude);
+                },
+                (error) => {
+                    console.error("Error getting location:", error);
+                }
+            );
+        } else {
+            console.log("Geolocation is not supported by this browser");
+        }
+    };
+
+
+   
+
+
     const changehandler = async (e) => {
 
         try {
@@ -21,8 +48,11 @@ const BookService = () => {
                 {
                     params: {
                         servicename: e.target.value,
+
                     },
                 })
+            console.log(res);
+
             console.log("res in searchHandler", res.data.data)
             setservices(res.data.data)
             setisLoading(false)
@@ -39,7 +69,7 @@ const BookService = () => {
 
             setisLoading(true)
             const res = await axios.get("http://localhost:4000/services/services")
-            // console.log(res);
+            console.log(res);
             // console.log(res.data);
             // console.log(res.data.message);
             console.log(res.data.data)
@@ -54,6 +84,8 @@ const BookService = () => {
     }
     useEffect(() => {
         submitHandler();
+        getUserCurrentLocation();
+
     }, [])
 
 
@@ -62,7 +94,7 @@ const BookService = () => {
 
 
     return (
-        <div className="col-12 mt-4">
+        <div className="col-12 mt-4" style={{marginInlineStart:"15px"}}>
             <div className="mb-5 ps-3">
                 <h4 className="mb-1 font-weight-bolder">Services</h4>
                 <p className="font-weight-bolder">You can book services shown below...</p>
@@ -74,31 +106,33 @@ const BookService = () => {
                 style={{ border: "1px solid red" }}
                 onChange={(e) => {
                     changehandler(e)
-                }} />
+                }}
+            />
+            
 
 
             {isLoading ? (
                 <CustomeLoader />
             ) : (
                 <>
-                        <div className="row">
+                    <div className="row">
 
-                            {
-                                services?.map((service) => {
+                        {
+                            services?.map((service) => {
 
-                                    return (
-                                        <div className="col-xl-3 col-md-6 mb-xl-0 mb-4" >
-                                            <div className="card card-blog card-plain">
-                                                <div className="card-header p-0 mt-n4 mx-3">
-                                                    <a className="d-block shadow-xl border-radius-xl">
-                                                        <img
-                                                            src="https://res.cloudinary.com/dduum8wwj/image/upload/v1710050022/nlbo5vmlukyctyv9wt7h.jpg"
-                                                            alt="img-blur-shadow"
-                                                            className="img-fluid shadow border-radius-xl"
-                                                        />
-                                                    </a>
-                                                </div>
-                                                <div className="card-body p-3">
+                                return (
+                                    <div className="col-xl-3 col-md-6 mb-xl-5 mb-4">
+                                        <div className="card card-blog ">
+                                            <div className="card-header p-0 mt-n4 mx-3">
+                                                <a className="d-block shadow-xl border-radius-xl">
+                                                    <img
+                                                        src={service.imageUrl}
+                                                        alt="img-blur-shadow"
+                                                        className="img-fluid shadow border-radius-xl"
+                                                    />
+                                                </a>
+                                            </div>
+                                            <div className="card-body p-3">
 
                                                 <a href="javascript:;" style={{ color: 'black' }}>
                                                     <h4 style={{ color: 'solid black' }}>{service?.servicename}...</h4>
@@ -115,24 +149,25 @@ const BookService = () => {
 
                                                     <Link
                                                         to={`/user/detailservice/${service._id}`}
-                                                        className="btn bg-gradient-primary w-100 my-2 mb-4"
-                                                        >
+                                                        className="btn btn-link bg-gradient-info text-info text-gradient "
+                                                        style={{ width: "300px", marginTop: "20px" }}
+                                                    >
                                                         Details
                                                     </Link>
 
 
 
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    )
-                                })
-                            }
+                                    </div>
+                                )
+                            })
+                        }
 
 
 
-                        </div>
+                    </div>
                 </>
             )}
 

@@ -30,36 +30,82 @@ const UserProfile = () => {
 
     const submitHandler = async (data) => {
 
-        setisLoading(true)
-        const res = await axios.put("http://localhost:4000/users/user/" + id, data)
-        console.log(res.data)
-        setisLoading(false)
 
-        if (res.status === 200) {
-            toast.success('🦄 User updated successfully..', {
-                position: "top-center",
+        try {
+
+            setisLoading(true)
+            const res = await axios.put("http://localhost:4000/users/user/" + id, data)
+            console.log(res.data)
+            setisLoading(false)
+
+            if (res.status === 200) {
+                toast.success('🦄 User updated successfully..', {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "colored",
+                    // transition: Bounce,
+                });
+            }
+            getuser()
+
+
+        } catch (error) {
+
+            console.log(error)
+            toast.error('Error !', {
+                position: "top-right",
                 autoClose: 5000,
                 hideProgressBar: false,
                 closeOnClick: true,
                 pauseOnHover: true,
                 draggable: true,
                 progress: undefined,
-                theme: "colored",
-                // transition: Bounce,
+                theme: "dark",
+
             });
+            setisLoading(false)
+
         }
-        getuser()
+
+
 
     }
 
     const getuser = async () => {
 
+        try {
 
-        setisLoading(true)
-        const res = await axios.get("http://localhost:4000/users/user/" + id)
-        console.log(res.data.data)
-        setuser(res.data.data)
-        setisLoading(false)
+            setisLoading(true)
+            const res = await axios.get("http://localhost:4000/users/user/" + id)
+            console.log(res.data.data)
+            setuser(res.data.data)
+            setisLoading(false)
+            
+        } catch (error) {
+
+            console.log(error)
+            toast.error('Something went wrong !', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+
+            });
+            setisLoading(false)
+
+            
+        }
+
+      
     }
     useEffect(() => {
         getuser()
@@ -71,9 +117,6 @@ const UserProfile = () => {
         localStorage.removeItem("id");
         window.location.href = "/"
         setisLoading(false)
-
-
-
     }
     return (
         <div className="container-fluid px-2 px-md-4">
@@ -111,6 +154,7 @@ const UserProfile = () => {
                                 <div className="row gx-4 mb-2">
                                     <div className="col-auto">
                                         <div className="avatar avatar-xl position-relative">
+                                            <img src="../assets/img/icons/profile.png" alt="profile_image" />
 
                                         </div>
                                     </div>
@@ -127,17 +171,17 @@ const UserProfile = () => {
                                                 <li className="nav-item" role="presentation">
                                                     <Button
                                                         onClick={clickhandler}
-                                                        className="nav-link mb-0 btn btn-danger px-0 py-1 "
+                                                        className="nav-link mb-0 btn btn-danger btn-gradient px-0 py-1 "
                                                         data-bs-toggle="tab"
                                                         href="javascript:;"
                                                         role="tab"
                                                         aria-selected="false"
                                                         tabIndex={1}
                                                     >
-                                                        <i className="material-icons  text-lg position-relative">
+                                                        <i className="material-icons text-danger text-gradient  text-lg position-relative">
                                                             login
                                                         </i>
-                                                        <span className="ms-1">Log-out</span>
+                                                        <span className="ms-1 text-danger text-gradient">Log-out</span>
                                                     </Button>
                                                 </li>
 
@@ -179,7 +223,8 @@ const UserProfile = () => {
 
                                                             <div className="text-center">
                                                                 <button type="submit"
-                                                                    className="btn bg-gradient-primary w-100 my-4 mb-2"
+                                                                    className="btn btn-link bg-gradient-success text-success text-gradient "
+                                                                    style={{ width: "300px", marginTop: "9px" }}
 
                                                                     value="submit" >
                                                                     Update
