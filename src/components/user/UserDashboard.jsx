@@ -12,6 +12,8 @@ import axios from "axios";
 import { Bar } from 'react-chartjs-2';
 import { Link } from 'react-router-dom';
 import CustomeLoader from '../CustomeLoader';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 Chart.register(CategoryScale);
 Chart.register(ArcElement);
 Chart.register(LinearScale);

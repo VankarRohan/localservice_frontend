@@ -35,10 +35,6 @@ const BookService = () => {
         }
     };
 
-
-   
-
-
     const changehandler = async (e) => {
 
         try {
@@ -95,7 +91,7 @@ const BookService = () => {
 
     return (
         <div className="col-12 mt-4" style={{marginInlineStart:"15px"}}>
-            <div className="mb-5 ps-3">
+            <div className="mb-5 ps-3 ">
                 <h4 className="mb-1 font-weight-bolder">Services</h4>
                 <p className="font-weight-bolder">You can book services shown below...</p>
             </div>

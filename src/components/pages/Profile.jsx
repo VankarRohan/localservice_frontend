@@ -63,7 +63,7 @@ const Profile = () => {
     const clickhandler = async () => {
 
         localStorage.removeItem("id");
-        window.location.href = "/"
+        window.location.href = "/sign-in"
     }
 
 
@@ -115,7 +115,7 @@ const Profile = () => {
                                         onClick={clickhandler}
                                         className="nav-link mb-0 btn btn-danger px-0 py-1 "
                                         data-bs-toggle="tab"
-                                        href="javascript:;"
+                                        // href="javascript:;"
                                         role="tab"
                                         aria-selected="false"
                                         tabIndex={1}

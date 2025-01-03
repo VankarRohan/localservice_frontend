@@ -119,7 +119,7 @@ const DetailBookService = () => {
     return (
 
 
-        <div className="container mt-5" >
+        <div className="container mt-5" style={{ marginInlineStart: "350px" }}>
 
             {isLoading ? (
                 <CustomeLoader />
@@ -139,10 +139,10 @@ const DetailBookService = () => {
                         theme="colored"
 
                     />
-                    <div className="row">
+
                         {cards.map((card) => (
                             <div key={card.id} className="col-md-4 ml-15 mb-4" >
-                                <div className="card" style={{ border: "2px solid black" }}>
+                                <div className="card card-blog bg-gradient-info bg-gradient" >
                                     <img
                                         src={service.imageUrl}
                                         className="card-img-top"
@@ -190,7 +190,7 @@ const DetailBookService = () => {
                                 </div>
                             </div>
                         ))}
-                    </div>
+
                 </>
             )}
         </div>

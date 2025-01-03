@@ -27,6 +27,8 @@ import DetailBooking from './components/user/DetailBooking';
 
 
 function App() {
+
+  axios.defaults.BASE_URL = "https://localservice-backend-1.onrender.com"
   const path = window.location.pathname;
   console.log(path)
 
