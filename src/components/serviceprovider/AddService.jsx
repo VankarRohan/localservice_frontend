@@ -93,7 +93,7 @@ const AddService = () => {
         }, 2000);
 
         // alert("data posted")
-      } else if (res.status == 500) {
+      } else  {
 
         alert("Data not posted")
       }

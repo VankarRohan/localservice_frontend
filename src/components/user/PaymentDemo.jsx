@@ -208,8 +208,7 @@ const PaymentDemo = () => {
                     pauseOnHover: true,
                     draggable: true,
                     progress: undefined,
-                    theme: "colored",
-                    transition: Bounce,
+                    theme: "colored"
                 });
             }
             navigate("/user/mybookings")

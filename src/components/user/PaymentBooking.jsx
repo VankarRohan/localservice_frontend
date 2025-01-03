@@ -164,7 +164,7 @@ const PaymentBooking = () => {
                 <>
                     <MDBRow className="d-flex justify-content-center py-5" style={{ borderRadius: "15px", marginTop: "125px" }}>
                         <MDBCol md="7" lg="5" xl="4"
-                        style={{backgroundImage : src("../assets/img/illustrations/pattern-tree.svg")}}
+                        style={{backgroundImage : ("../assets/img/illustrations/pattern-tree.svg")}}
                         >
                             <MDBCard className='card'>
                                
