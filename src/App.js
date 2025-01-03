@@ -24,6 +24,7 @@ import PaymentDemo from './components/user/PaymentDemo';
 import UpdateAddress from './components/user/UpdateAddress';
 import { About } from './components/pages/About';
 import DetailBooking from './components/user/DetailBooking';
+import axios from 'axios';
 
 
 function App() {
