@@ -96,7 +96,7 @@ function App() {
               <Route path="/user/address" element=<Address /> ></Route>
               <Route path="/user/paymentdemo/:id" element=<PaymentDemo /> ></Route>
               <Route path="/user/paymentdemo/updateaddress/:id" element=<UpdateAddress /> ></Route>
-              <Route path="https://gleeful-halva-f5b217.netlify.app/user/dashboard" element={<UserDashboard />}></Route>
+              <Route path="/user/dashboard" element={<UserDashboard />}></Route>
               <Route path="/user/profile" element={<UserProfile />}></Route>
               <Route path="/user/bookingdetails/:id" element={<DetailBooking />}></Route>
 
