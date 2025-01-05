@@ -73,17 +73,19 @@ function App() {
 
       <main className="main-content border-radius-lg ps" >
         <div>
+       
+
           <Routes >
-
-
+          
             <Route path="/" element={<About></About>}></Route>
             {/* <Route path="*" element={<NotFound />} /> */}
             <Route path="/sign-in" element={<Sign_in></Sign_in>}></Route>
             <Route path="/forgotpwd" element={<ForgotPassword></ForgotPassword>}></Route>
             <Route path="/resetpwd" element={<ResetPassword></ResetPassword>}></Route>
-
             <Route path='/register' element={<RegistrationForm />}></Route>
-            {/* <Route element={<ProtectedRoutes />}> */}
+
+            <Route element={<ProtectedRoutes />}>
+
               <Route path="/serviceprovider/dashboard" element={<ServiceProviderDashboard />}></Route>
               <Route path="/serviceprovider/addservice" element={<AddService />}></Route>
               <Route path="/serviceprovider/details/:id" element={<DetailService />}></Route>
@@ -101,9 +103,7 @@ function App() {
               <Route path="/user/profile" element={<UserProfile />}></Route>
               <Route path="/user/bookingdetails/:id" element={<DetailBooking />}></Route>
 
-
-              
-            {/* </Route> */}
+            </Route>
           </Routes>
         </div>
       </main>
