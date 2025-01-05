@@ -77,12 +77,13 @@ function App() {
 
 
             <Route path="/" element={<About></About>}></Route>
+            {/* <Route path="*" element={<NotFound />} /> */}
             <Route path="/sign-in" element={<Sign_in></Sign_in>}></Route>
             <Route path="/forgotpwd" element={<ForgotPassword></ForgotPassword>}></Route>
             <Route path="/resetpwd" element={<ResetPassword></ResetPassword>}></Route>
 
             <Route path='/register' element={<RegistrationForm />}></Route>
-            <Route element={<ProtectedRoutes />}>
+            {/* <Route element={<ProtectedRoutes />}> */}
               <Route path="/serviceprovider/dashboard" element={<ServiceProviderDashboard />}></Route>
               <Route path="/serviceprovider/addservice" element={<AddService />}></Route>
               <Route path="/serviceprovider/details/:id" element={<DetailService />}></Route>
@@ -102,7 +103,7 @@ function App() {
 
 
               
-            </Route>
+            {/* </Route> */}
           </Routes>
         </div>
       </main>

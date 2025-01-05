@@ -5,12 +5,14 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+
 const Sign_in = () => {
 
     const { register, handleSubmit } = useForm();
+   
 
     const [role, setrole] = useState("65ccb273d0984494fb621f7b")
-    // const navigate = useNavigate()
+    const navigate = useNavigate()
 
 
 
@@ -35,10 +37,18 @@ const Sign_in = () => {
                         theme: "dark",
                         // transition: Bounce,
                     });
-                    setTimeout(() => {
-                        window.location.href = "/user/dashboard"
+                    
+                    // setTimeout(() => {
+                    //     window.location.href = "/user/dashboard"
 
-                    }, 1000);
+                    // }, 1000);
+
+                        // Simulate an API call or validation
+                        setTimeout(() => {
+                          // Navigate to the dashboard without reloading
+                          navigate("/user/dashboard");
+                        }, 1000);
+                    
                     console.log("Login successfull")
                     console.log(res.data.data)
                     localStorage.setItem("id", res.data.data._id)
