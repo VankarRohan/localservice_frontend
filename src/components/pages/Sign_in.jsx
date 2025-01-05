@@ -36,7 +36,7 @@ const Sign_in = () => {
 
             if (role == "65ccb273d0984494fb621f7b") {
 
-                const res = await axios.post("http://localhost:4000/users/user/login", data)
+                const res = await axios.post("http://localservice-backend-1.onrender.com/users/user/login", data)
 
                 if (res.status == 200) {
                     // setisLoading(true)
@@ -72,7 +72,7 @@ const Sign_in = () => {
 
             } else if (role == "65ccbf3ee5c62d495e19360e") {
 
-                const res = await axios.post("http://localhost:4000/sproviders/sprovider/login", data)
+                const res = await axios.post("http://localservice-backend-1.onrender.com/sproviders/sprovider/login", data)
 
                 if (res.status == 200) {
                     console.log("Login successful...")

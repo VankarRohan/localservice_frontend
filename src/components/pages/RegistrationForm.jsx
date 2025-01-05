@@ -51,7 +51,7 @@ const RegistrationForm = () => {
 
             if (role === "65ccb273d0984494fb621f7b") {
 
-                const res = await axios.post("https://localservice-backend-1.onrender.com/users/user", data)
+                const res = await axios.post("http://localservice-backend-1.onrender.com/users/user", data)
                 console.log(res.data)
                 toast.success('🦄 User registration successful...', {
                     position: "top-center",
@@ -69,7 +69,7 @@ const RegistrationForm = () => {
 
             } else if (role === "65ccbf3ee5c62d495e19360e") {
 
-                const res = await axios.post("http://localhost:4000/sproviders/sprovider", data)
+                const res = await axios.post("http://localservice-backend-1.onrender.com/sproviders/sprovider", data)
                 console.log(res.data)
                 console.log("service provider registration successful...")
                 navigate("/sign-in")
@@ -95,20 +95,17 @@ const RegistrationForm = () => {
     }
 
 
-
-
-
-    const loadRoles = async () => {
-
-        const res = await axios.get("http://localhost:4000/roles/role")
-        console.log(res.data.data)
-        setrole(res.data.data)
-    }
     useEffect(() => {
         loadRoles()
     }, [])
 
 
+    const loadRoles = async () => {
+
+        const res = await axios.get("http://localservice-backend-1.onrender.com/roles/role")
+        // console.log(res.data.data)
+        // setrole(res.data.data)
+    }
 
     return (
         <div className='page-header min-vh-100'>
