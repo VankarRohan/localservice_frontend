@@ -34,7 +34,7 @@ const UserDashboard = () => {
 
     try {
       
-      const res = await axios.delete("http://localhost:4000/bookings/booking/"+id)
+      const res = await axios.delete("https://localservice-backend-1.onrender.com/bookings/booking/"+id)
       console.log(res)
       getPendingBooking()
 
@@ -61,7 +61,7 @@ const UserDashboard = () => {
     try {
       setisLoading(true)
 
-      const res = await axios.get("http://localhost:4000/bookings/pendingStatus/" + id)
+      const res = await axios.get("https://localservice-backend-1.onrender.com/bookings/pendingStatus/" + id)
       console.log(res.data.data);
       setbook(res.data.data);
       setisLoading(false)
@@ -88,7 +88,7 @@ const UserDashboard = () => {
     try {
 
       setisLoading(true)
-      const res = await axios.get("http://localhost:4000/bookings/doneStatus/" + id);
+      const res = await axios.get("https://localservice-backend-1.onrender.com/bookings/doneStatus/" + id);
       console.log(res.data.data);
       setdoneBook(res.data.data);
       setisLoading(false)
@@ -115,7 +115,7 @@ const UserDashboard = () => {
     try {
 
       setisLoading(true)
-      const res = await axios.get("http://localhost:4000/services/services");
+      const res = await axios.get("https://localservice-backend-1.onrender.com/services/services");
       console.log("service", res.data.data);
       console.log(res.data.data.length)
       if (res.data.data && res.data.data.length > 0) {

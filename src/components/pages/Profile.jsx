@@ -14,7 +14,7 @@ const Profile = () => {
 
     const { register, handleSubmit } = useForm({
         defaultValues: async () => {
-            const res = await axios.get("http://localhost:4000/sproviders/sprovider/" + id)
+            const res = await axios.get("https://localservice-backend-1.onrender.com/sproviders/sprovider/" + id)
 
 
             return {
@@ -29,7 +29,7 @@ const Profile = () => {
 
     const submitHandler = async (data) => {
 
-        const res = await axios.put("http://localhost:4000/sproviders/sprovider/" + id, data)
+        const res = await axios.put("https://localservice-backend-1.onrender.com/sproviders/sprovider/" + id, data)
         console.log(res.data)
         if (res.status === 200) {
             toast.success('🦄 Serviceprovider updated successfully..', {
@@ -52,7 +52,7 @@ const Profile = () => {
     const getServiceprovider = async () => {
 
 
-        const res = await axios.get("http://localhost:4000/sproviders/sprovider/" + id)
+        const res = await axios.get("https://localservice-backend-1.onrender.com/sproviders/sprovider/" + id)
         console.log(res.data.data)
         setserviceprovider(res.data.data)
     }

@@ -10,17 +10,17 @@ import 'react-toastify/dist/ReactToastify.css';
 const Sign_in = () => {
 
     const { register, handleSubmit } = useForm();
-    const prevLocationRef = useRef(null);
-    const [shouldRender, setShouldRender] = useState(true);
+    // const prevLocationRef = useRef(null);
+    // const [shouldRender, setShouldRender] = useState(true);
 
-    const location = useLocation();
+    // const location = useLocation();
 
-    useEffect(() => {
-        if (prevLocationRef.current !== location.pathname) {
-            setShouldRender(true);
-        }
-        prevLocationRef.current = location.pathname;
-    }, [location]);
+    // useEffect(() => {
+    //     if (prevLocationRef.current !== location.pathname) {
+    //         setShouldRender(true);
+    //     }
+    //     prevLocationRef.current = location.pathname;
+    // }, [location]);
 
 
 
@@ -36,7 +36,7 @@ const Sign_in = () => {
 
             if (role == "65ccb273d0984494fb621f7b") {
 
-                const res = await axios.post("http://localservice-backend-1.onrender.com/users/user/login", data)
+                const res = await axios.post("https://localservice-backend-1.onrender.com/users/user/login", data)
 
                 if (res.status == 200) {
                     // setisLoading(true)
@@ -72,7 +72,7 @@ const Sign_in = () => {
 
             } else if (role == "65ccbf3ee5c62d495e19360e") {
 
-                const res = await axios.post("http://localservice-backend-1.onrender.com/sproviders/sprovider/login", data)
+                const res = await axios.post("https://localservice-backend-1.onrender.com/sproviders/sprovider/login", data)
 
                 if (res.status == 200) {
                     console.log("Login successful...")
@@ -103,7 +103,7 @@ const Sign_in = () => {
 
     return (
         <>
-            {shouldRender && (
+            {/* {shouldRender && ( */}
 
 
                 <div
@@ -210,7 +210,7 @@ const Sign_in = () => {
                         </div>
                     </div>
                 </div>
-            )}
+            {/* )} */}
         </>
     )
 }

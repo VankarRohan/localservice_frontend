@@ -18,7 +18,7 @@ const MyBookings = () => {
     try {
 
       setisLoading(true)
-      const res = await axios.get("http://localhost:4000/bookings/booking/user/" + id)
+      const res = await axios.get("https://localservice-backend-1.onrender.com/bookings/booking/user/" + id)
       console.log(res.data.data)
       setbookings(res.data.data)
       setisLoading(false)

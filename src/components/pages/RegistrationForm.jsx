@@ -51,7 +51,7 @@ const RegistrationForm = () => {
 
             if (role === "65ccb273d0984494fb621f7b") {
 
-                const res = await axios.post("http://localservice-backend-1.onrender.com/users/user", data)
+                const res = await axios.post("https://localservice-backend-1.onrender.com/users/user", data)
                 console.log(res.data)
                 toast.success('🦄 User registration successful...', {
                     position: "top-center",

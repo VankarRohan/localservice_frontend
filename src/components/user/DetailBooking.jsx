@@ -13,7 +13,7 @@ const DetailBooking = () => {
   const [service, setservice] = useState([]);
   const getDetail = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/bookings/booking/" + id);
+      const res = await axios.get("https://localservice-backend-1.onrender.com/bookings/booking/" + id);
       console.log(res.data.data.status);
       setstaus(res.data.data.status)
       console.log(res.data.data);

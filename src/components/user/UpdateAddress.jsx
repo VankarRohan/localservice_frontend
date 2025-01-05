@@ -13,7 +13,7 @@ const UpdateAddress = () => {
     const { register, handleSubmit } = useForm({
 
         defaultValues: async () => {
-            const res = await axios.get("http://localhost:4000/addresses/address/" + id)
+            const res = await axios.get("https://localservice-backend-1.onrender.com/addresses/address/" + id)
 
             return {
                 address: res.data.data.address,
@@ -30,7 +30,7 @@ const UpdateAddress = () => {
 
         try {
 
-            const res = await axios.put("http://localhost:4000/addresses/address/" + id,data)
+            const res = await axios.put("https://localservice-backend-1.onrender.com/addresses/address/" + id,data)
             console.log(res.data);
 
             if (res.status === 200) {

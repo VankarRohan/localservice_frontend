@@ -36,7 +36,7 @@ const DetailBookService = () => {
 
             setisLoading(true)
             const res = await axios.post(
-                "http://localhost:4000/bookings/booking/",
+                "https://localservice-backend-1.onrender.com/bookings/booking/",
                 objectToSbmit
             );
             console.log(res)
@@ -88,7 +88,7 @@ const DetailBookService = () => {
 
             setisLoading(true)
             const res = await axios.get(
-                "http://localhost:4000/services/services/" + id
+                "https://localservice-backend-1.onrender.com/services/services/" + id
             );
             console.log(res.data.data);
             setservice(res.data.data);

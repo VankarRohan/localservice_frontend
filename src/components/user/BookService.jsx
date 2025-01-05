@@ -40,7 +40,7 @@ const BookService = () => {
         try {
 
             setisLoading(true)
-            const res = await axios.get("http://localhost:4000/services/filterservice",
+            const res = await axios.get("https://localservice-backend-1.onrender.com/services/filterservice",
                 {
                     params: {
                         servicename: e.target.value,
@@ -64,7 +64,7 @@ const BookService = () => {
 
 
             setisLoading(true)
-            const res = await axios.get("http://localhost:4000/services/services")
+            const res = await axios.get("https://localservice-backend-1.onrender.com/services/services")
             console.log(res);
             // console.log(res.data);
             // console.log(res.data.message);

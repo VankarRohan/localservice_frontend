@@ -105,7 +105,7 @@ const PaymentBooking = () => {
         try {
 
             setisLoading(true)
-            const res = await axios.put("http://localhost:4000/bookings/bookingstatus/" + id)
+            const res = await axios.put("https://localservice-backend-1.onrender.com/bookings/bookingstatus/" + id)
             console.log(res.data)
             setisLoading(false)
 

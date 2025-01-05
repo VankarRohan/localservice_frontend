@@ -15,7 +15,7 @@ const UserProfile = () => {
 
     const { register, handleSubmit } = useForm({
         defaultValues: async () => {
-            const res = await axios.get("http://localhost:4000/users/user/" + id)
+            const res = await axios.get("https://localservice-backend-1.onrender.com/users/user/" + id)
 
 
             return {
@@ -34,7 +34,7 @@ const UserProfile = () => {
         try {
 
             setisLoading(true)
-            const res = await axios.put("http://localhost:4000/users/user/" + id, data)
+            const res = await axios.put("https://localservice-backend-1.onrender.com/users/user/" + id, data)
             console.log(res.data)
             setisLoading(false)
 
@@ -81,7 +81,7 @@ const UserProfile = () => {
         try {
 
             setisLoading(true)
-            const res = await axios.get("http://localhost:4000/users/user/" + id)
+            const res = await axios.get("https://localservice-backend-1.onrender.com/users/user/" + id)
             console.log(res.data.data)
             setuser(res.data.data)
             setisLoading(false)

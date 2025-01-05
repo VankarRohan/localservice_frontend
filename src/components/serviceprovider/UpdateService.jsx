@@ -22,7 +22,7 @@ const UpdateService = () => {
 
             setisLoading(true)
 
-            const res = await axios.put("http://localhost:4000/services/services/" + id, data)
+            const res = await axios.put("https://localservice-backend-1.onrender.com/services/services/" + id, data)
             console.log(res.data)
             setisLoading(false)
 
@@ -64,7 +64,7 @@ const UpdateService = () => {
 
         setisLoading(true)
 
-        const res = await axios.get("http://localhost:4000/categories/category");
+        const res = await axios.get("https://localservice-backend-1.onrender.com/categories/category");
         // console.log(res.data.data);
         setcategories(res.data.data);
         setisLoading(false)
@@ -76,7 +76,7 @@ const UpdateService = () => {
 
         setisLoading(true)
 
-        const res = await axios.get("http://localhost:4000/Scategories/Scategory");
+        const res = await axios.get("https://localservice-backend-1.onrender.com/Scategories/Scategory");
         // console.log(res.data.data);
         setSubcategories(res.data.data);
         setisLoading(false)
@@ -87,7 +87,7 @@ const UpdateService = () => {
 
         setisLoading(true)
 
-        const res = await axios.get("http://localhost:4000/types/type")
+        const res = await axios.get("https://localservice-backend-1.onrender.com/types/type")
         // console.log(res.data.data)
         setTypes(res.data.data)
         setisLoading(false)
@@ -97,7 +97,7 @@ const UpdateService = () => {
     const { register, handleSubmit } = useForm({
 
         defaultValues: async () => {
-            const res = await axios.get("http://localhost:4000/services/services/" + id)
+            const res = await axios.get("https://localservice-backend-1.onrender.com/services/services/" + id)
 
             return {
                 servicename: res.data.data.servicename,

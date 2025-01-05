@@ -42,7 +42,7 @@ const PaymentDemo = () => {
     const getuserbyid = async () => {
 
         try {
-            const res = await axios.get("http://localhost:4000/users/user/" + userId)
+            const res = await axios.get("https://localservice-backend-1.onrender.com/users/user/" + userId)
             console.log(res.data.data)
             setaddresses(res.data.data.addresses)
 
@@ -88,7 +88,7 @@ const PaymentDemo = () => {
 
         try {
 
-            const res = await axios.delete("http://localhost:4000/addresses/address/" + id)
+            const res = await axios.delete("https://localservice-backend-1.onrender.com/addresses/address/" + id)
             console.log(res.data)
             getuserbyid()
 
@@ -195,7 +195,7 @@ const PaymentDemo = () => {
             }
 
             setisLoading(true)
-            const res = await axios.put("http://localhost:4000/bookings/bookingstatus/" + id, data)
+            const res = await axios.put("https://localservice-backend-1.onrender.com/bookings/bookingstatus/" + id, data)
             console.log(res.data)
             setisLoading(false)
 
@@ -244,7 +244,7 @@ const PaymentDemo = () => {
         try {
 
             data.user = userId
-            const res = await axios.post("http://localhost:4000/addresses/address", data)
+            const res = await axios.post("https://localservice-backend-1.onrender.com/addresses/address", data)
             console.log(res.data)
 
             getuserbyid()

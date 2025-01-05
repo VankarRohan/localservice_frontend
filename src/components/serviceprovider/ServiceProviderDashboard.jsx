@@ -35,7 +35,7 @@ const ServiceProviderDashboard = () => {
         try {
 
             setisLoading(true)
-            const res = await axios.get("http://localhost:4000/services/services/provider/" + id);
+            const res = await axios.get("https://localservice-backend-1.onrender.com/services/services/provider/" + id);
 
             console.log("service", res.data.data);
             setisLoading(false)
@@ -92,7 +92,7 @@ const ServiceProviderDashboard = () => {
         try {
 
             setisLoading(true)
-            const res = await axios.get("http://localhost:4000/bookings/booking/provider/" + id)
+            const res = await axios.get("https://localservice-backend-1.onrender.com/bookings/booking/provider/" + id)
 
             console.log(res.data.data)
             setbook(res.data.data)
@@ -113,7 +113,7 @@ const ServiceProviderDashboard = () => {
         try {
 
             setisLoading(true)
-            const res = await axios.delete("http://localhost:4000/bookings/booking/" + id)
+            const res = await axios.delete("https://localservice-backend-1.onrender.com/bookings/booking/" + id)
             console.log(res)
             console.log(res.data.data)
             if (res.status === 200) {

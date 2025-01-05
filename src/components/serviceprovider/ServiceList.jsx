@@ -20,7 +20,7 @@ const ServiceList = () => {
 
             if (id !== undefined || id !== null) {
 
-                const res = await axios.get("http://localhost:4000/services/services/provider/" + id)
+                const res = await axios.get("https://localservice-backend-1.onrender.com/services/services/provider/" + id)
                 console.log(res.data.data)
                 setservices(res.data.data)
                 setisLoading(false)
@@ -39,7 +39,7 @@ const ServiceList = () => {
 
             setisLoading(true)
 
-            const res = await axios.get("http://localhost:4000/services/filterservice",
+            const res = await axios.get("https://localservice-backend-1.onrender.com/services/filterservice",
                 {
                     params: {
                         servicename: e.target.value,
@@ -63,7 +63,7 @@ const ServiceList = () => {
 
             setisLoading(true)
 
-            const res = await axios.delete("http://localhost:4000/services/services/" + id)
+            const res = await axios.delete("https://localservice-backend-1.onrender.com/services/services/" + id)
 
             // console.log("Service deleted succesfully..")
 

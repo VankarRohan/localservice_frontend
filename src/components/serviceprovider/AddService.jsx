@@ -73,7 +73,7 @@ const AddService = () => {
         formData.append("latitude",latitude)
         formData.append("longitude",longitude)
 
-        const res = await axios.post("http://localhost:4000/services/services", formData);
+        const res = await axios.post("https://localservice-backend-1.onrender.com/services/services", formData);
         console.log(res.data.data)
         console.log(data);
         toast.success('🦄 Service added successfully...', {
@@ -125,7 +125,7 @@ const AddService = () => {
 
     setisLoading(true)
 
-    const res = await axios.get("http://localhost:4000/categories/category");
+    const res = await axios.get("https://localservice-backend-1.onrender.com/categories/category");
     // console.log(res.data.data);
     setcategories(res.data.data);
     setisLoading(false)
@@ -136,7 +136,7 @@ const AddService = () => {
   const loadSubCategories = async () => {
 
     setisLoading(true)
-    const res = await axios.get("http://localhost:4000/Scategories/Scategory");
+    const res = await axios.get("https://localservice-backend-1.onrender.com/Scategories/Scategory");
     // console.log(res.data.data);
     setSubcategories(res.data.data);
     setisLoading(false)
@@ -146,7 +146,7 @@ const AddService = () => {
   const loadTypes = async () => {
 
     setisLoading(true)
-    const res = await axios.get("http://localhost:4000/types/type")
+    const res = await axios.get("https://localservice-backend-1.onrender.com/types/type")
     // console.log(res.data.data)
     setTypes(res.data.data)
     setisLoading(false)

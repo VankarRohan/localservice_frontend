@@ -16,7 +16,7 @@ const ForgotPassword = () => {
 
             if (role == "65ccb273d0984494fb621f7b") {
 
-                const res = await axios.post("http://localhost:4000/users/user/isuserexist", data)
+                const res = await axios.post("https://localservice-backend-1.onrender.com/users/user/isuserexist", data)
 
                 console.log(res.data)
                 if (res.data.flag == 1) {
@@ -33,7 +33,7 @@ const ForgotPassword = () => {
 
             } else if (role == "65ccbf3ee5c62d495e19360e") {
 
-                const res = await axios.post("http://localhost:4000/sproviders/sprovider/isserproexist", data)
+                const res = await axios.post("https://localservice-backend-1.onrender.com/sproviders/sprovider/isserproexist", data)
 
                 console.log(res.data)
                 if (res.data.flag == 1) {

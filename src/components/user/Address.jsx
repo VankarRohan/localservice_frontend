@@ -8,7 +8,7 @@ const Address = () => {
 
         try {
             const id = localStorage.getItem("id")
-            const res = await axios.get("http://localhost:4000/users/user/" + id)
+            const res = await axios.get("https://localservice-backend-1.onrender.com/users/user/" + id)
             console.log(res.data.data)
             setaddresses(res.data.data.addresses)
         } catch (error) {

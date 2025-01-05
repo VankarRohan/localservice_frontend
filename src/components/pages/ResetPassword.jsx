@@ -30,7 +30,7 @@ const ResetPassword = () => {
 
         if (location?.state?.role == "User") {
 
-            const res = await axios.post("http://localhost:4000/users/user/resetpassword", data);
+            const res = await axios.post("https://localservice-backend-1.onrender.com/users/user/resetpassword", data);
             if (res.data.flag == 1) {
                 alert("Password reset success")
                 navigate("/")
@@ -41,7 +41,7 @@ const ResetPassword = () => {
             }
         } else if (location?.state?.role == "service provider") {
 
-            const res = await axios.post("http://localhost:4000/sproviders/sprovider/resetpassword", data);
+            const res = await axios.post("https://localservice-backend-1.onrender.com/sproviders/sprovider/resetpassword", data);
             if (res.data.flag == 1) {
                 alert("Password reset success")
                 navigate("/")
