@@ -30,7 +30,7 @@ export const About = () => {
 
             <header className="bg-gradient-dark">
                 <div
-                    className="page-header min-vh-75"
+                    className="page-header min-vh-85"
                     style={{ backgroundImage: 'url("../assets/img/bg9.jpg")' }}
                 >
                     <span className="mask bg-gradient-dark opacity-6" />
@@ -64,7 +64,7 @@ export const About = () => {
                 <section className="py-7">
                     <div className="container">
                         <div className="row align-items-center">
-                            <div className="col-lg-6">
+                            <div className="col-lg-8">
                                 <div className="row justify-content-start">
                                     <div className="col-md-6">
                                         <div className="info">
@@ -73,8 +73,7 @@ export const About = () => {
                                             </i>
                                             <h5>Fully integrated</h5>
                                             <p>
-                                                We get insulted by others, lose trust for those We get back
-                                                freezes
+                                            Welcome to our fully integrated platform, where cutting-edge technology meets seamless functionality to provide an exceptional user experience.Powered by real-time dynamic updates, secure authentication, and modular architecture, we bring you a unified ecosystem that integrates booking services, user profiles, payment gateways, and much more—all in one place. 
                                             </p>
                                         </div>
                                     </div>
@@ -85,8 +84,7 @@ export const About = () => {
                                             </i>
                                             <h5>Payments functionality</h5>
                                             <p>
-                                                We get insulted by others, lose trust for those We get back
-                                                freezes
+                                            Experience seamless and secure payment functionality designed to make every transaction effortless and reliable. Our platform integrates cutting-edge payment gateways, ensuring your transactions are processed swiftly and safely.
                                             </p>
                                         </div>
                                     </div>
@@ -99,8 +97,7 @@ export const About = () => {
                                             </i>
                                             <h5>Prebuilt components</h5>
                                             <p>
-                                                We get insulted by others, lose trust for those We get back
-                                                freezes
+                                            Discover the power of prebuilt components that bring efficiency and elegance to our platform. Each component is meticulously designed for seamless integration, ensuring a consistent and polished user experience.
                                             </p>
                                         </div>
                                     </div>
@@ -111,8 +108,7 @@ export const About = () => {
                                             </i>
                                             <h5>Improved platform</h5>
                                             <p>
-                                                We get insulted by others, lose trust for those We get back
-                                                freezes
+                                            Welcome to an improved platform designed to redefine your online experience with enhanced performance, functionality, and ease of use.This is more than just a platform it's a commitment to delivering excellence at every click. 
                                             </p>
                                         </div>
                                     </div>

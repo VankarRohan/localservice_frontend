@@ -10,20 +10,6 @@ import 'react-toastify/dist/ReactToastify.css';
 const Sign_in = () => {
 
     const { register, handleSubmit } = useForm();
-    // const prevLocationRef = useRef(null);
-    // const [shouldRender, setShouldRender] = useState(true);
-
-    // const location = useLocation();
-
-    // useEffect(() => {
-    //     if (prevLocationRef.current !== location.pathname) {
-    //         setShouldRender(true);
-    //     }
-    //     prevLocationRef.current = location.pathname;
-    // }, [location]);
-
-
-
     const [role, setrole] = useState("65ccb273d0984494fb621f7b")
     const navigate = useNavigate()
 
@@ -40,7 +26,7 @@ const Sign_in = () => {
 
                 if (res.status == 200) {
                     // setisLoading(true)
-                    toast.success('🦄 Login successful...', {
+                    toast.success('🦄 User Login successful...', {
                         position: "top-right",
                         autoClose: 1500,
                         hideProgressBar: false,
@@ -49,15 +35,8 @@ const Sign_in = () => {
                         draggable: true,
                         progress: undefined,
                         theme: "dark",
-                        // transition: Bounce,
                     });
 
-                    // setTimeout(() => {
-                    //     window.location.href = "/user/dashboard"
-
-                    // }, 1000);
-
-                    // Simulate an API call or validation
                     setTimeout(() => {
                         navigate("/user/dashboard");
                         window.location.reload();

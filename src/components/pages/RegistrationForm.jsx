@@ -11,85 +11,72 @@ const RegistrationForm = () => {
     const { register, handleSubmit } = useForm();
     const navigate = useNavigate()
 
-    // const [latitude, setlatitude] = useState('')
-    // const [longitude, setlongitude] = useState('')
-
-    // const getUserCurrentLocation = () => {
-
-
-    //     if (navigator.geolocation) {
-    //         navigator.geolocation.getCurrentPosition(
-    //             (position) => {
-    //                 console.log("Latitude:", position.coords.latitude);
-    //                 console.log("Longitude:", position.coords.longitude);
-    //                 setlatitude(position.coords.latitude);
-    //                 setlongitude(position.coords.longitude);
-    //             },
-    //             (error) => {
-    //                 console.error("Error getting location:", error);
-    //             }
-    //         );
-    //     } else {
-    //         console.log("Geolocation is not supported by this browser");
-    //     }
-    // };
-
-    // useEffect(() => {
-
-    //     getUserCurrentLocation();
-
-    // }, [])
-
     const submithandler = async (data) => {
 
-        console.log("data..............", data)
-
-        // const objectTosubmit = Object.assign(data, { latitude: latitude, longitude: longitude })
-        // console.log(objectTosubmit)
+        console.log("data....", data)
 
         try {
 
             if (role === "65ccb273d0984494fb621f7b") {
 
                 const res = await axios.post("https://localservice-backend-1.onrender.com/users/user", data)
-                console.log(res.data)
-                toast.success('🦄 User registration successful...', {
-                    position: "top-center",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "colored",
+                // console.log(res.status)
 
-                });
-                console.log("User registration successful...")
-                navigate("/sign-in")
+                if (res.status == 200) {
+
+                    window.alert(" User regestration successful")
+                    // toast.success('🦄 User regestration successful...', {
+                    //     position: "top-right",
+                    //     autoClose: 1500,
+                    //     hideProgressBar: false,
+                    //     closeOnClick: true,
+                    //     pauseOnHover: true,
+                    //     draggable: true,
+                    //     progress: undefined,
+                    //     theme: "dark",
+                    // });
+                    console.log("User registration successful...")
+                    navigate("/sign-in")
+                }
+
 
             } else if (role === "65ccbf3ee5c62d495e19360e") {
 
-                const res = await axios.post("http://localservice-backend-1.onrender.com/sproviders/sprovider", data)
-                console.log(res.data)
-                console.log("service provider registration successful...")
-                navigate("/sign-in")
-                toast.success('🦄 service provider registration successful...', {
-                    position: "top-center",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "colored",
+                const res = await axios.post("https://localservice-backend-1.onrender.com/sproviders/sprovider", data)
+                // console.log(res)
 
-                });
+                if (res.status == 200) {
 
+                    console.log("service provider registration successful...")
+                    navigate("/sign-in")
+                    toast.success('🦄 service provider registration successful...', {
+                        position: "top-center",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "colored",
+
+                    });
+                }
             }
-
-        } catch (error) {
+        }
+        catch (error) {
 
             console.error("Error in registration:", error.message)
+            toast.error('🦄 Error in registration !', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+
+            });
         }
 
     }
@@ -102,7 +89,7 @@ const RegistrationForm = () => {
 
     const loadRoles = async () => {
 
-        const res = await axios.get("http://localservice-backend-1.onrender.com/roles/role")
+        const res = await axios.get("https://localservice-backend-1.onrender.com/roles/role")
         // console.log(res.data.data)
         // setrole(res.data.data)
     }

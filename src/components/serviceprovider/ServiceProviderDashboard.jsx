@@ -168,7 +168,6 @@ const ServiceProviderDashboard = () => {
                 pauseOnHover
                 theme="colored"
             />
-
             {isLoading ? (
                 <CustomeLoader />
             ) : (
@@ -241,6 +240,7 @@ const ServiceProviderDashboard = () => {
                                 </div>
                             </div>
                         </div>
+                        
                         <div className="container-fluid mt-8 mb-8">
                             <div className="row justify-content-center">
                                 <div className="col-lg-8">

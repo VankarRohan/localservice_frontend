@@ -1,5 +1,6 @@
 // import logo from './logo.svg';
 import './App.css';
+// import './Sidebar.css';
 import ServiceList from './components/serviceprovider/ServiceList';
 import ServiceProviderDashboard from './components/serviceprovider/ServiceProviderDashboard';
 import AddService from './components/serviceprovider/AddService';
@@ -25,6 +26,8 @@ import UpdateAddress from './components/user/UpdateAddress';
 import { About } from './components/pages/About';
 import DetailBooking from './components/user/DetailBooking';
 import axios from 'axios';
+import { useState } from 'react';
+
 
 
 function App() {
@@ -32,6 +35,14 @@ function App() {
   axios.defaults.baseURL = "https://localservice-backend-1.onrender.com"
   const path = window.location.pathname;
   console.log(path)
+
+  const [isSidebarVisible, setIsSidebarVisible] = useState(false);
+
+  // Toggle Sidebar visibility
+  // const toggleSidebar = () => {
+  //   console.log(isSidebarVisible)
+  //   setIsSidebarVisible(!isSidebarVisible);
+  // }
 
   return (
     <body className="g-sidenav-show bg-gray-100">
@@ -53,8 +64,15 @@ function App() {
 
         ? null : <aside
           className="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark"
+          // className={`sidenav navbar show-sidebar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark ${isSidebarVisible ? "show-sidebar" : ""}`}
           id="sidenav-main"
         >
+          {/* <button className="toggle-sidebar-btn"
+            onClick={toggleSidebar}
+          >
+            <i className="material-icons">menu</i>
+          </button> */}
+
           {path === "/" ||
 
             path === "/sign-in" ||
@@ -66,17 +84,35 @@ function App() {
             path === "/user/sign-in"
 
             ? null :
-            < SideBar />}
+            < SideBar
+            />}
         </aside>
+
       }
 
 
+
       <main className="main-content border-radius-lg ps" >
+        {/* {isSidebarVisible && (
+          <div
+            className="sidebar-overlay"
+            onClick={() => setIsSidebarVisible(false)}
+          >
+            Sidebar overlay is visible
+          </div>
+        )} */}
+
+        {/* <button className="toggle-sidebar-btn"
+          onClick={toggleSidebar}
+        >
+          <i className="material-icons">menu</i>
+        </button> */}
+
         <div>
-       
+
 
           <Routes >
-          
+
             <Route path="/" element={<About></About>}></Route>
             {/* <Route path="*" element={<NotFound />} /> */}
             <Route path="/sign-in" element={<Sign_in></Sign_in>}></Route>
