@@ -41,7 +41,7 @@ export const About = () => {
                                 <p className="lead mb-4 text-white opacity-7">
                                     Welcome to Local Services.At Local Services, we bring convenience and expertise to your doorstep. Say goodbye to the hassle of finding reliable service providers. Whether you need a plumber, electrician, cleaner, or beautician, we've got you covered. Our platform connects you with skilled professionals who are vetted, experienced, and ready to tackle your needs.
                                 </p>
-                                <Link to="register" type="submit" class="btn bg-white text-dark">Create Account </Link>
+                                <Link to="register" type="submit" className="btn bg-white text-dark">Create Account </Link>
                             </div>
                             <div className="card-footer text-center pt-0 px-lg-2 px-1" style={{color:"white"}}>
                                 <p className="mb-2 text-sm mx-auto">
@@ -153,30 +153,30 @@ export const About = () => {
                     <p>Copyright © 2024 Local Services. All rights reserved.</p>
                     <p>Made with ❤️ By Rohan</p>
                     <div className="social_icons">
-                        <ul class="d-flex flex-row ms-n3 nav">
-                            <li class="nav-item">
-                                <a class="nav-link pe-1" target="_blank">
-                                    <i class="fab fa-facebook text-lg opacity-8" aria-hidden="true"></i>
+                        <ul className="d-flex flex-row ms-n3 nav">
+                            <li className="nav-item">
+                                <a className="nav-link pe-1" target="_blank">
+                                    <i className="fab fa-facebook text-lg opacity-8" aria-hidden="true"></i>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link pe-1" target="_blank">
-                                    <i class="fab fa-twitter text-lg opacity-8" aria-hidden="true"></i>
+                            <li className="nav-item">
+                                <a className="nav-link pe-1" target="_blank">
+                                    <i className="fab fa-twitter text-lg opacity-8" aria-hidden="true"></i>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link pe-1" target="_blank">
-                                    <i class="fab fa-dribbble text-lg opacity-8" aria-hidden="true"></i>
+                            <li className="nav-item">
+                                <a className="nav-link pe-1" target="_blank">
+                                    <i className="fab fa-dribbble text-lg opacity-8" aria-hidden="true"></i>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link pe-1" target="_blank">
-                                    <i class="fab fa-github text-lg opacity-8" ></i>
+                            <li className="nav-item">
+                                <a className="nav-link pe-1" target="_blank">
+                                    <i className="fab fa-github text-lg opacity-8" ></i>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link pe-1" target="_blank">
-                                    <i class="fab fa-youtube text-lg opacity-8" aria-hidden="true"></i>
+                            <li className="nav-item">
+                                <a className="nav-link pe-1" target="_blank">
+                                    <i className="fab fa-youtube text-lg opacity-8" aria-hidden="true"></i>
                                 </a>
                             </li>
                         </ul>
@@ -238,7 +238,7 @@ export const About = () => {
         //                 </div>
         //                 <div className="display_card">
         //                     <div>
-        //                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-list" viewBox="0 0 16 16">
+        //                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-card-list" viewBox="0 0 16 16">
         //                             <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2z" />
         //                             <path d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8m0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0M4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0" />
         //                         </svg>
@@ -257,7 +257,7 @@ export const About = () => {
         //                         alt="grid" />
         //                 </div>
         //                 <div className="display_card">
-        //                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-check" viewBox="0 0 16 16">
+        //                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-calendar-check" viewBox="0 0 16 16">
         //                         <path d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0" />
         //                         <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z" />
         //                     </svg>

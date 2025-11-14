@@ -32,17 +32,7 @@ const Profile = () => {
         const res = await axios.put("https://localservice-backend-1.onrender.com/sproviders/sprovider/" + id, data)
         console.log(res.data)
         if (res.status === 200) {
-            toast.success('🦄 Serviceprovider updated successfully..', {
-                position: "top-center",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "colored",
-
-            });
+            toast.success('Serviceprovider updated successfully..');
 
         }
         getServiceprovider()
@@ -69,19 +59,7 @@ const Profile = () => {
 
     return (
         <div className="container-fluid px-2 px-md-4">
-            <ToastContainer
-                position="top-center"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="colored"
-
-            />
+          
             <div
                 className="page-header min-height-300 border-radius-xl mt-4"
                 style={{
@@ -146,7 +124,7 @@ const Profile = () => {
 
                                     <div className="card-body">
 
-                                        <form onSubmit={handleSubmit(submitHandler)} role="form" class="text-start">
+                                        <form onSubmit={handleSubmit(submitHandler)} role="form" className="text-start">
 
 
                                             <div className="input-group input-group-outline my-3">

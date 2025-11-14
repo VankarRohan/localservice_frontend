@@ -30,56 +30,24 @@ const UpdateAddress = () => {
 
         try {
 
-            const res = await axios.put("https://localservice-backend-1.onrender.com/addresses/address/" + id,data)
+            const res = await axios.put("https://localservice-backend-1.onrender.com/addresses/address/" + id, data)
             console.log(res.data);
-
-            if (res.status === 200) {
-
-                // window.location.pathname = "/serviceprovider/servicelist"
-                // alert("data updated")
-
-                if (res.status === 200) {
-
-                    toast.success('🦄 Service updated successfully...', {
-                        position: "top-center",
-                        autoClose: 3000,
-                        hideProgressBar: false,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true,
-                        progress: undefined,
-                        theme: "colored",
-
-                    });
-                    setTimeout(() => {
-                        navigate("/user/mybookings")
-                    }, 3000);
-                }
-
-            }
+            toast.success('Service updated successfully...');
+            setTimeout(() => {
+                navigate("/user/mybookings")
+            }, 3000);
 
         } catch (error) {
 
             console.log(error)
+            toast.error(error.message);
         }
     }
 
     return (
 
         <div className="page-header align-items-start min-vh-100">
-            <ToastContainer
-                position="top-center"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="colored"
 
-            />
             <div className="container my-auto">
                 <div className="col-lg-4 col-md-8 mt-4 col-12 mx-auto mt-4">
                     <div className="card z-index-0 fadeIn3 fadeInBottom">

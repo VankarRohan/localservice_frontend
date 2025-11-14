@@ -29,22 +29,10 @@ const UpdateService = () => {
 
             if (res.status === 200) {
 
-                // window.location.pathname = "/serviceprovider/servicelist"
-                // alert("data updated")
 
                 if (res.status === 200) {
 
-                    toast.success('🦄 Service updated successfully...', {
-                        position: "top-center",
-                        autoClose: 3000,
-                        hideProgressBar: false,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true,
-                        progress: undefined,
-                        theme: "colored",
-
-                    });
+                    toast.success('Service updated successfully...');
                     setTimeout(() => {
                         navigate("/serviceprovider/servicelist")
                     }, 3200);
@@ -55,6 +43,7 @@ const UpdateService = () => {
         } catch (error) {
 
             console.log(error)
+            toast.error(error.message)
         }
 
     }
@@ -123,20 +112,6 @@ const UpdateService = () => {
 
 
         <div className="page-header align-items-start min-vh-100">
-            <ToastContainer
-                position="top-center"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="colored"
-
-            />
-
             {isLoading ? (
                 <CustomeLoader />
             ) : (
@@ -153,7 +128,7 @@ const UpdateService = () => {
 
                                         <div className="card-body">
 
-                                            <form onSubmit={handleSubmit(submitHandler)} role="form" class="text-start">
+                                            <form onSubmit={handleSubmit(submitHandler)} role="form" className="text-start">
 
 
                                                 <div className="input-group input-group-outline my-3">

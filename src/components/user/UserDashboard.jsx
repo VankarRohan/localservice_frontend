@@ -12,7 +12,7 @@ import axios from "axios";
 import { Bar } from 'react-chartjs-2';
 import { Link } from 'react-router-dom';
 import CustomeLoader from '../CustomeLoader';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 Chart.register(CategoryScale);
 Chart.register(ArcElement);
@@ -25,99 +25,67 @@ const UserDashboard = () => {
   // const [service, setservice] = useState([]);
   const id = localStorage.getItem("id")
   const [book, setbook] = useState([])
-  const [isLoading, setisLoading] = useState([])
+  const [isLoading, setLoading] = useState([])
   const [doneBook, setdoneBook] = useState([]);
 
 
 
-  const deletebooking= async(id)=>{
+  const deletebooking = async (id) => {
 
     try {
-      
-      const res = await axios.delete("https://localservice-backend-1.onrender.com/bookings/booking/"+id)
+
+      const res = await axios.delete("https://localservice-backend-1.onrender.com/bookings/booking/" + id)
       console.log(res)
+      toast.success('Booking deleted successfully !');
       getPendingBooking()
 
     } catch (error) {
 
       console.log(error)
-      toast.error('Error in deleting booking !', {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-
-    });
-      
+      toast.error('Error in deleting booking !');
     }
 
   }
 
   const getPendingBooking = async () => {
     try {
-      setisLoading(true)
+      setLoading(true)
 
       const res = await axios.get("https://localservice-backend-1.onrender.com/bookings/pendingStatus/" + id)
       console.log(res.data.data);
       setbook(res.data.data);
-      setisLoading(false)
+      setLoading(false)
 
     } catch (error) {
-
-
       console.log(error);
-      toast.error('Error in Login !', {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-
-    });
+      toast.info(error.response.data.message || "error in server");
     }
   }
 
   const getDoneBooking = async () => {
     try {
 
-      setisLoading(true)
+      setLoading(true)
       const res = await axios.get("https://localservice-backend-1.onrender.com/bookings/doneStatus/" + id);
-      console.log(res.data.data);
+      console.log(res.data);
       setdoneBook(res.data.data);
-      setisLoading(false)
+      setLoading(false)
 
     } catch (error) {
 
 
       console.log(error);
-      toast.error('Error in getting booking !', {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-
-    });
+      toast.error(error.response.data.message || 'Error in getting booking !');
     }
   };
 
   const getAllservice = async () => {
     try {
 
-      setisLoading(true)
+      setLoading(true)
       const res = await axios.get("https://localservice-backend-1.onrender.com/services/services");
-      console.log("service", res.data.data);
-      console.log(res.data.data.length)
+      console.log(res.data.data);
+      // console.log(res.data.data.length)
       if (res.data.data && res.data.data.length > 0) {
 
         const categoryCounts = {};
@@ -155,24 +123,14 @@ const UserDashboard = () => {
           ],
         };
         setdata(transformedData);
-        setisLoading(false)
+        setLoading(false)
 
       }
     } catch (error) {
 
-      
-      console.error("Error fetching service:", error);
-      toast.error('Error fetching service !', {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
 
-    });
+      console.error("Error fetching service:", error);
+      toast.error(error.response.data.message || 'Error fetching service !');
     }
   };
 
@@ -230,7 +188,7 @@ const UserDashboard = () => {
                         <tbody>
                           {book?.map((booking) => {
                             return (
-                              <tr >
+                              <tr key={booking._id}>
                                 <td>
                                   <div className="text-center d-flex flex-column justify-content-center">
                                     <h6 className="mb-0 text-sm">
@@ -258,9 +216,9 @@ const UserDashboard = () => {
                                     DONE YOUR PAYMENT
                                   </Link><br />
                                   <button
-                                   onClick={()=>deletebooking(booking._id)}
+                                    onClick={() => deletebooking(booking._id)}
                                     className="btn btn-link bg-gradient-danger text-danger text-gradient"
-                                    
+
                                   >
                                     cancel YOUR PAYMENT
                                   </button>
@@ -310,7 +268,7 @@ const UserDashboard = () => {
                         <tbody>
                           {doneBook?.map((booking) => {
                             return (
-                              <tr>
+                              <tr key={booking._id}>
                                 <td>
                                   <div className="text-center d-flex flex-column justify-content-center">
                                     <h6 className="mb-0 text-sm">

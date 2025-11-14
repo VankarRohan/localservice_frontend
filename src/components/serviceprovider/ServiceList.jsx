@@ -27,8 +27,9 @@ const ServiceList = () => {
 
             }
         } catch (error) {
-
-            alert("No service found !")
+            console.log(error)
+            toast.error("No service found !")
+            setisLoading(false)
 
         }
     }
@@ -68,17 +69,7 @@ const ServiceList = () => {
             // console.log("Service deleted succesfully..")
 
             if (res.status === 200) {
-                toast.success('🦄 service deleted successfully..', {
-                    position: "top-center",
-                    autoClose: 3000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "colored",
-
-                });
+                toast.success('service deleted successfully..');
                 setTimeout(() => {
                     fetchMyService()
 
@@ -88,7 +79,7 @@ const ServiceList = () => {
 
 
         } catch (error) {
-
+            toast.error(error.message)
             console.log(error)
         }
     }
@@ -104,19 +95,7 @@ const ServiceList = () => {
 
 
             <div className="main-content border-radius-lg ">
-                <ToastContainer
-                    position="top-center"
-                    autoClose={5000}
-                    hideProgressBar={false}
-                    newestOnTop={false}
-                    closeOnClick
-                    rtl={false}
-                    pauseOnFocusLoss
-                    draggable
-                    pauseOnHover
-                    theme="colored"
-
-                />
+            
                 <div className='row'>
                     <div className="col-md-12">
 
@@ -172,11 +151,11 @@ const ServiceList = () => {
                                                                 </tr>
                                                             )
                                                         })
-                                                        }
+                                                    }
 
-                                                    </tbody>
-                                                </table>
-                                            </div>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </>
                                 )
                             }

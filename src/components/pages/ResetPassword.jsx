@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 const ResetPassword = () => {
 
@@ -32,22 +33,22 @@ const ResetPassword = () => {
 
             const res = await axios.post("https://localservice-backend-1.onrender.com/users/user/resetpassword", data);
             if (res.data.flag == 1) {
-                alert("Password reset success")
+                toast.success("Password reset success")
                 navigate("/")
             }
             else {
-                alert("Password reset failed")
+                toast.error("Password reset failed")
                 navigate("/") //login....
             }
         } else if (location?.state?.role == "service provider") {
 
             const res = await axios.post("https://localservice-backend-1.onrender.com/sproviders/sprovider/resetpassword", data);
             if (res.data.flag == 1) {
-                alert("Password reset success")
+                 toast.success("Password reset success")
                 navigate("/")
             }
             else {
-                alert("Password reset failed")
+                 toast.error("Password reset failed")
                 navigate("/") //login....
             }
 

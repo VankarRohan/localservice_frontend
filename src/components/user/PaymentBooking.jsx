@@ -93,12 +93,12 @@ const PaymentBooking = () => {
 
 
         if (!cardNumber || cardNumber.length !== 19) {
-            setCardNumberError('Invalid card number. Please enter 16 digits.');
+            toast.error('Invalid card number. Please enter 16 digits.');
             return;
         }
 
         if (!expiryMonth || !expiryYear) {
-            setExpiryDateError('Please enter a valid expiry date in MM/YYYY format.');
+            toast.error('Please enter a valid expiry date in MM/YYYY format.');
             return;
         }
 
@@ -110,28 +110,19 @@ const PaymentBooking = () => {
             setisLoading(false)
 
             if (res.status === 200) {
-                toast.success('🦄 Booking done successfully..', {
-                    position: "top-center",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "colored",
-                    
-                });
+                navigate("/user/mybookings")
+                toast.success('Booking done successfully..');
             }
-            navigate("/user/mybookings")
-            // alert("Booking done...")
+            
 
         } catch (error) {
 
             console.log(error)
+            toast.error(error.message)
         }
 
-        console.log('Card number:', cardNumber);
-        console.log('Expiry:', expiryMonth + '/' + expiryYear);
+        // console.log('Card number:', cardNumber);
+        // console.log('Expiry:', expiryMonth + '/' + expiryYear);
 
         setCardNumber('');
         setExpiryMonth('');
@@ -145,19 +136,6 @@ const PaymentBooking = () => {
 
         <MDBContainer fluid className="py-5 gradient-custom" style={{ height: "100vh" }}>
 
-            <ToastContainer
-                position="top-center"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="colored"
-
-            />
             {isLoading ? (
                 <CustomeLoader />
             ) : (

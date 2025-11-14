@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import CustomeLoader from '../CustomeLoader';
 
@@ -46,17 +46,7 @@ const DetailBookService = () => {
             if (res.status === 200) {
 
 
-                toast.success('🦄 Booking added successfully...', {
-                    position: "top-center",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "colored",
-
-                });
+                toast.success('Booking added successfully...');
             }
 
             navigate("/user/mybookings")
@@ -64,17 +54,7 @@ const DetailBookService = () => {
         } catch (err) {
 
             console.log(err);
-            toast.error('Error !', {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-
-            });
+            toast.error(err.message);
             setisLoading(false)
         }
     };
@@ -126,70 +106,63 @@ const DetailBookService = () => {
             ) : (
                 <>
 
-                    <ToastContainer
-                        position="top-center"
-                        autoClose={5000}
-                        hideProgressBar={false}
-                        newestOnTop={false}
-                        closeOnClick
-                        rtl={false}
-                        pauseOnFocusLoss
-                        draggable
-                        pauseOnHover
-                        theme="colored"
 
-                    />
 
-                        {cards.map((card) => (
-                            <div key={card.id} className="col-md-4 ml-15 mb-4" >
-                                <div className="card card-blog bg-gradient-info bg-gradient" >
-                                    <img
-                                        src={service.imageUrl}
-                                        className="card-img-top"
-                                        alt={`Card ${service._id}`}
-                                    />
+                    {cards.map((card) => (
+                        <div key={card.id} className="col-md-4 ml-15 mb-4" >
+                            <div className="card card-blog bg-gradient-info bg-gradient" >
+                                <img
+                                    src={service.imageUrl}
+                                    className="card-img-top"
+                                    alt={`Card ${service._id}`}
+                                />
 
-                                    <div className="card-body  p-3">
+                                <div className="card-body  p-3">
 
-                                        <h3 className="card-title " style={{ color: 'solid black' }}>{service?.servicename}...</h3>
-                                        <p className="card-title">
-                                            <h6> Category :-</h6>
-                                            {service?.category?.name}
-                                        </p>
-                                        <p className="card-title">
-                                            <h6> Sub-Category :-</h6>
-                                            {service?.subcategory?.name}
-                                        </p>
-                                        <p className="card-title">
-                                            <h6> Type :-</h6>
-                                            {service?.type?.name}
-                                        </p>
-                                        <p className="card-title">
-                                            <h6> Fees :-</h6>
-                                            {service?.fees}
-                                        </p>
-                                        <p className="card-title">
-                                            <h6> Area :-</h6>
-                                            {service?.area}
-                                        </p>
-                                        <p className="card-title">
-                                            <h6> City :-</h6>
-                                            {service?.city}
-                                        </p>
-                                        <p className="card-title">
-                                            <h6> State :-</h6>
-                                            {service?.state}
-                                        </p>
-                                        <button
-                                            className="btn btn-link bg-gradient-success text-black text-gradient "
-                                            style={{ width: "350px", color: "black" }}
-                                            onClick={() => { submitBooking() }}>
-                                            Book now
-                                        </button>
-                                    </div>
+                                    <h3 className="card-title " style={{ color: 'solid black' }}>{service?.servicename}...</h3>
+                                    <p className="card-title">
+                                        <h6> Service Provider :-</h6>
+                                        {service?.serviceprovider?.name}
+                                    </p>
+                                    <p className="card-title">
+                                        <h6> Category :-</h6>
+                                        {service?.category?.name}
+                                    </p>
+
+                                    <p className="card-title">
+                                        <h6> Sub-Category :-</h6>
+                                        {service?.subcategory?.name}
+                                    </p>
+                                    <p className="card-title">
+                                        <h6> Type :-</h6>
+                                        {service?.type?.name}
+                                    </p>
+                                    <p className="card-title">
+                                        <h6> Fees :-</h6>
+                                        {service?.fees}
+                                    </p>
+                                    <p className="card-title">
+                                        <h6> Area :-</h6>
+                                        {service?.area}
+                                    </p>
+                                    <p className="card-title">
+                                        <h6> City :-</h6>
+                                        {service?.city}
+                                    </p>
+                                    <p className="card-title">
+                                        <h6> State :-</h6>
+                                        {service?.state}
+                                    </p>
+                                    <button
+                                        className="btn btn-link bg-gradient-success text-black text-gradient "
+                                        style={{ width: "350px", color: "black" }}
+                                        onClick={() => { submitBooking() }}>
+                                        Book now
+                                    </button>
                                 </div>
                             </div>
-                        ))}
+                        </div>
+                    ))}
 
                 </>
             )}

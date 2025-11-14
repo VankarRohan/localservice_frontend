@@ -13,7 +13,7 @@ import {
 // import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
+import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import CustomeLoader from '../CustomeLoader';
 import { useForm } from 'react-hook-form';
@@ -47,20 +47,8 @@ const PaymentDemo = () => {
             setaddresses(res.data.data.addresses)
 
         } catch (error) {
-
-
             console.log(error)
-            toast.error('Error getting user !', {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-
-            });
+            toast.error(error.message);
         }
     }
 
@@ -68,17 +56,7 @@ const PaymentDemo = () => {
 
         const addressId = id
         console.log(addressId)
-        toast.success('Address selected...', {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "dark",
-
-        });
+        toast.success('Address selected...');
         setaddressId(addressId)
     }
 
@@ -95,26 +73,10 @@ const PaymentDemo = () => {
         } catch (error) {
 
             console.log(error)
-            toast.error('Error deleting address !', {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-
-            });
+            toast.error(error.message || 'Error deleting address !');
 
         }
     }
-
-    useEffect(() => {
-        validateExpiryDate();
-        getuserbyid()
-
-    }, [expiryMonth, expiryYear]);
 
     const handleCardNumberChange = (event) => {
         const newCardNumber = event.target.value.replace(/\D/g, '');
@@ -172,18 +134,18 @@ const PaymentDemo = () => {
 
     };
 
-
-
     const handleFormSubmit = async () => {
 
 
         if (!cardNumber || cardNumber.length !== 19) {
             setCardNumberError('Invalid card number. Please enter 16 digits.');
+            toast.error('Invalid card number. Please enter 16 digits.');
             return;
         }
 
         if (!expiryMonth || !expiryYear) {
             setExpiryDateError('Please enter a valid expiry date in MM/YYYY format.');
+            toast.error('Please enter a valid expiry date in MM/YYYY format.');
             return;
         }
 
@@ -198,36 +160,14 @@ const PaymentDemo = () => {
             const res = await axios.put("https://localservice-backend-1.onrender.com/bookings/bookingstatus/" + id, data)
             console.log(res.data)
             setisLoading(false)
-
-            if (res.status === 200) {
-                toast.success('🦄 Booking done successfully..', {
-                    position: "top-center",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "colored"
-                });
-            }
             navigate("/user/mybookings")
-            // alert("Booking done...")
+            toast.success('Booking done successfully..');
+
 
         } catch (error) {
 
             console.log(error)
-            toast.error('Error in payment !', {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-
-            });
+            toast.error(error.message || 'Error in payment !');
             setisLoading(false)
         }
 
@@ -252,50 +192,21 @@ const PaymentDemo = () => {
         } catch (error) {
 
             console.log(error)
-            toast.error('Error adding address !', {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-
-            });
+            toast.error(error.message || 'Error adding address !');
         }
 
     }
 
+    useEffect(() => {
+        validateExpiryDate();
+        getuserbyid()
+
+    }, [expiryMonth, expiryYear]);
+
     return (
 
         <>
-            <Helmet>
-                <link
-                    rel="stylesheet"
-                    type="text/css"
-                    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700"
-                />
 
-                <link href="../../assets/css/nucleo-icons.css" rel="stylesheet" />
-                <link href="../../assets/css/nucleo-svg.css" rel="stylesheet" />
-
-                <script
-                    src="https://kit.fontawesome.com/42d5adcbca.js"
-                    crossorigin="anonymous"
-                ></script>
-
-                <link
-                    href="https://fonts.googleapis.com/icon?family=Material+Icons+Round"
-                    rel="stylesheet"
-                />
-
-                <link
-                    id="pagestyle"
-                    href="../../assets/css/material-dashboard.css?v=3.0.0"
-                    rel="stylesheet"
-                />
-            </Helmet>
 
             <div className="container-fluid1 py-4 ">
 
@@ -445,19 +356,6 @@ const PaymentDemo = () => {
 
                 <>
 
-                    <ToastContainer
-                        position="top-center"
-                        autoClose={5000}
-                        hideProgressBar={false}
-                        newestOnTop={false}
-                        closeOnClick
-                        rtl={false}
-                        pauseOnFocusLoss
-                        draggable
-                        pauseOnHover
-                        theme="colored"
-
-                    />
                     {isLoading ? (
                         <CustomeLoader />
                     ) : (
@@ -470,59 +368,59 @@ const PaymentDemo = () => {
                                                 <MDBCol size="9">
                                                     <TextField
 
-                                                            label="Card Number"
-                                                            id="form1"
-                                                            type="text"
-                                                            placeholder="1234 5678 9012 3457"
-                                                            value={cardNumber}
-                                                            onChange={handleCardNumberChange}
-                                                            error={!!cardNumberError} // Set error state based on cardNumberError
-                                                            helperText={cardNumberError}
+                                                        label="Card Number"
+                                                        id="form1"
+                                                        type="text"
+                                                        placeholder="1234 5678 9012 3457"
+                                                        value={cardNumber}
+                                                        onChange={handleCardNumberChange}
+                                                        error={!!cardNumberError} // Set error state based on cardNumberError
+                                                        helperText={cardNumberError}
 
-                                                        />
-                                                    </MDBCol>
+                                                    />
+                                                </MDBCol>
 
-                                                    <MDBCol size="3">
-                                                        <img
-                                                            src="https://img.icons8.com/color/48/000000/visa.png"
-                                                            alt="visa"
-                                                            width="64px"
+                                                <MDBCol size="3">
+                                                    <img
+                                                        src="https://img.icons8.com/color/48/000000/visa.png"
+                                                        alt="visa"
+                                                        width="64px"
 
-                                                        />
-                                                    </MDBCol>
+                                                    />
+                                                </MDBCol>
 
-                                                    <MDBCol size="9">
-                                                        <TextField
-                                                            label="Cardholder's Name"
-                                                            id="form2"
-                                                            type="text"
-                                                            placeholder="Cardholder's Name"
+                                                <MDBCol size="9">
+                                                    <TextField
+                                                        label="Cardholder's Name"
+                                                        id="form2"
+                                                        type="text"
+                                                        placeholder="Cardholder's Name"
 
-                                                        />
-                                                    </MDBCol>
+                                                    />
+                                                </MDBCol>
 
-                                                    <MDBCol size="6">
-                                                        <TextField
-                                                            label="Expiration"
-                                                            id="form2"
-                                                            type="text"
-                                                            placeholder="MM/YYYY"
-                                                            onChange={handleExpiryChange}
-                                                            error={!!expiryDateError} // Set error state based on cardNumberError
-                                                            helperText={expiryDateError}
+                                                <MDBCol size="6">
+                                                    <TextField
+                                                        label="Expiration"
+                                                        id="form2"
+                                                        type="text"
+                                                        placeholder="MM/YYYY"
+                                                        onChange={handleExpiryChange}
+                                                        error={!!expiryDateError} // Set error state based on cardNumberError
+                                                        helperText={expiryDateError}
 
-                                                        />
-                                                    </MDBCol>
+                                                    />
+                                                </MDBCol>
 
-                                                    <MDBCol size="3">
-                                                        <TextField
-                                                            label="CVV"
-                                                            id="form2"
-                                                            type="text"
-                                                            placeholder="&#9679;&#9679;&#9679;"
+                                                <MDBCol size="3">
+                                                    <TextField
+                                                        label="CVV"
+                                                        id="form2"
+                                                        type="text"
+                                                        placeholder="&#9679;&#9679;&#9679;"
 
-                                                        />
-                                                    </MDBCol>
+                                                    />
+                                                </MDBCol>
 
                                                 <MDBCol size="3">
                                                     <Button color="info" variant="contained" rounded size="lg" onClick={handleFormSubmit}>

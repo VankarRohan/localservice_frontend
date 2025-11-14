@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import { toast } from 'react-toastify'
 
 const Address = () => {
 
@@ -13,6 +14,7 @@ const Address = () => {
             setaddresses(res.data.data.addresses)
         } catch (error) {
             console.log(error)
+            toast.error(error.message)
         }
     }
     useEffect(() => {

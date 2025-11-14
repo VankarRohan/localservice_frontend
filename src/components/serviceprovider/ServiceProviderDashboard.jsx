@@ -82,7 +82,7 @@ const ServiceProviderDashboard = () => {
             }
         } catch (error) {
             console.error("Error fetching service:", error);
-            alert("Error fetching service");
+            toast.error("Error fetching service");
         }
     };
 
@@ -97,18 +97,19 @@ const ServiceProviderDashboard = () => {
             console.log(res.data.data)
             setbook(res.data.data)
             setisLoading(false)
-
-
-
+            
+            
+            
         } catch (error) {
-
+            
             console.log(error)
+            toast.error(error.message)
+            setisLoading(false)
         }
 
     }
 
     const deletebooking = async (id) => {
-
 
         try {
 
@@ -117,25 +118,17 @@ const ServiceProviderDashboard = () => {
             console.log(res)
             console.log(res.data.data)
             if (res.status === 200) {
-                toast.success('🦄 Booking canceled successfully...', {
-                    position: "top-center",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "colored",
-
-                });
+                toast.success('Booking canceled successfully...');
             }
 
             getBookings()
             setisLoading(false)
-
-
+            
+            
         } catch (error) {
+            toast.error(error.message)
             console.log(error)
+            setisLoading(false)
         }
 
     }
@@ -156,18 +149,7 @@ const ServiceProviderDashboard = () => {
     return (
 
         <>
-            <ToastContainer
-                position="top-center"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="colored"
-            />
+          
             {isLoading ? (
                 <CustomeLoader />
             ) : (

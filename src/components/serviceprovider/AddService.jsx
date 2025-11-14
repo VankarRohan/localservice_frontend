@@ -44,76 +44,45 @@ const AddService = () => {
 
   const submitHandler = async (data) => {
 
-    // var userObj = Object.assign(data);
-    // console.log("userObj...", userObj);
     const id = localStorage.getItem("id")
-    const dataObj = Object.assign(data, { serviceprovider: id})
-
-    // const objectTosubmit = Object.assign(dataObj, { latitude: latitude, longitude: longitude })
-    // console.log(objectTosubmit)
+    const dataObj = Object.assign(data, { serviceprovider: id })
     setisLoading(true);
     try {
-      //api calling...
-
 
       if (id !== undefined) {
 
 
         var formData = new FormData();
-        formData.append("servicename",data.servicename);
-        formData.append("myImage",data.myImage[0]);
-        formData.append("category",data.category);
-        formData.append("subcategory",data.subcategory);
-        formData.append("type",data.type);
-        formData.append("fees",data.fees);
-        formData.append("area",data.area);
-        formData.append("city",data.city);
-        formData.append("state",data.state);
-        formData.append("serviceprovider",id)
-        formData.append("latitude",latitude)
-        formData.append("longitude",longitude)
+        formData.append("servicename", data.servicename);
+        formData.append("myImage", data.myImage[0]);
+        formData.append("category", data.category);
+        formData.append("subcategory", data.subcategory);
+        formData.append("type", data.type);
+        formData.append("fees", data.fees);
+        formData.append("area", data.area);
+        formData.append("city", data.city);
+        formData.append("state", data.state);
+        formData.append("serviceprovider", id)
+        formData.append("latitude", latitude)
+        formData.append("longitude", longitude)
 
         const res = await axios.post("https://localservice-backend-1.onrender.com/services/services", formData);
         console.log(res.data.data)
         console.log(data);
-        toast.success('🦄 Service added successfully...', {
-          position: "top-center",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
 
-        });
+        toast.success('Service added successfully...');
         setTimeout(() => {
           navigate("/serviceprovider/servicelist")
-
         }, 2000);
 
-        // alert("data posted")
-      } else  {
-
-        alert("Data not posted")
+      } else {
+        toast.error("Data not posted")
       }
 
 
     } catch (e) {
-
       console.log(e)
-      toast.error('🦄 Error in creating service !', {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-
-      });
-
+      toast.error(e.message);
     }
     reset();
     setisLoading(false);
@@ -167,19 +136,6 @@ const AddService = () => {
 
 
     <div className="page-header align-items-start min-vh-100">
-      <ToastContainer
-        position="top-center"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="colored"
-
-      />
       {
         isLoading ? (
           <CustomeLoader />
@@ -199,7 +155,7 @@ const AddService = () => {
 
                     <div className="card-body">
 
-                      <form onSubmit={handleSubmit(submitHandler)} role="form" class="text-start">
+                      <form onSubmit={handleSubmit(submitHandler)} role="form" className="text-start">
 
 
                         <div className="input-group input-group-outline my-3">
@@ -275,7 +231,7 @@ const AddService = () => {
                         <div className="input-group input-group-outline my-3">
 
                           {/* <label >file</label> */}
-                          <input type="file"  placeholder="choose image"{...register("myImage")} />
+                          <input type="file" placeholder="choose image"{...register("myImage")} />
 
                         </div>
 

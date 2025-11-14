@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { useNavigate, Link } from 'react-router-dom'
+import {  Link } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import CustomeLoader from '../CustomeLoader';
@@ -9,7 +9,7 @@ const MyBookings = () => {
 
   // const navigate = useNavigate()
   const [isLoading, setisLoading] = useState(false)
-  const [bookings, setbookings] = useState([])
+  const [bookings, setBookings] = useState([])
 
 
   const getBookings = async () => {
@@ -20,7 +20,7 @@ const MyBookings = () => {
       setisLoading(true)
       const res = await axios.get("https://localservice-backend-1.onrender.com/bookings/booking/user/" + id)
       console.log(res.data.data)
-      setbookings(res.data.data)
+      setBookings(res.data.data)
       setisLoading(false)
 
 
@@ -28,17 +28,7 @@ const MyBookings = () => {
 
       setisLoading(false)
       console.log(error)
-      toast.error('Error !', {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-
-      });
+      toast.error(error.message);
     }
 
   }
@@ -51,18 +41,7 @@ const MyBookings = () => {
   return (
 
     <div className="col-12 mt-4" style={{ marginInlineStart: "14px" }}>
-      <ToastContainer
-        position="top-center"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="colored"
-      />
+     
 
       <div className="mb-5 ps-3">
         <h4 className="mb-1 font-weight-bolder">Bookings</h4>
@@ -80,7 +59,7 @@ const MyBookings = () => {
 
                 return (
 
-                  <div className="col-xl-3 mb-4" >
+                  <div className="col-xl-3 mb-4" key={booking._id}>
 
                     <div className="card card-blog bg-gradient-info bg-gradient">
 

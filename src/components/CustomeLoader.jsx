@@ -2,7 +2,7 @@ import React from 'react'
 import "./Loader.css"
 
 const CustomeLoader = () => {
-    console.log("custom loader called")
+    // console.log("custom loader called")
 
     return (
         <div class="dot-spinner">

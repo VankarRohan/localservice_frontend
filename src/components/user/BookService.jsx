@@ -3,6 +3,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import CustomeLoader from '../CustomeLoader';
+import { toast } from 'react-toastify';
 
 const BookService = () => {
 
@@ -76,6 +77,7 @@ const BookService = () => {
         } catch (e) {
 
             console.log(e)
+            toast.error(e.message)
         }
     }
     useEffect(() => {
@@ -117,7 +119,7 @@ const BookService = () => {
                             services?.map((service) => {
 
                                 return (
-                                    <div className="col-xl-3 col-md-6 mb-xl-5 mb-4">
+                                    <div className="col-xl-3 col-md-6 mb-xl-5 mb-4" key={service._id}>
                                         <div className="card card-blog ">
                                             <div className="card-header p-0 mt-n4 mx-3">
                                                 <a className="d-block shadow-xl border-radius-xl">

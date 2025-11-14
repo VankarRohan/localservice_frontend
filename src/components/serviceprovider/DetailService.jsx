@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import CustomeLoader from '../CustomeLoader';
+import { toast } from 'react-toastify';
 
 // import React from 'react'
 
@@ -31,6 +32,7 @@ const DetailService = () => {
 
         } catch (error) {
             console.log(error);
+            toast.error(error.message)
         }
     };
     useEffect(() => {
